@@ -97,13 +97,13 @@
     </div>
 
     <script>
-        // TU NUEVA URL DE EXEC
         const MAKE_WEBHOOK_URL = 'https://hook.eu1.make.com/cmma9n6v7egfcmtdjjx85kuc72p83b3k';
         
         document.getElementById('mentorshipForm').addEventListener('submit', function(e) {
             e.preventDefault();
             const btn = document.getElementById('submitBtn');
-            btn.disabled = true; btn.innerHTML = 'Enviando...';
+            btn.disabled = true; 
+            btn.innerHTML = 'Enviando...';
 
             const formData = {
                 nombre: document.getElementById('nombre').value,
@@ -118,21 +118,19 @@
                 experiencia: document.getElementById('metas').value
             };
 
-            // FETCH OPTIMIZADO PARA EVITAR ERROR 400
-           fetch(MAKE_WEBHOOK_URL, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(data)
-        })
-        .then(() => {
-            // Redirigir al WhatsApp después del envío exitoso
-            window.location.href = 'https://chat.whatsapp.com/KtBu7mszVBOE2oMdf0bFl1';
-        })
-        .catch(() => {
-            // Por si acaso falla algo, también redirigir
-            window.location.href = 'https://chat.whatsapp.com/KtBu7mszVBOE2oMdf0bFl1';
+            fetch(MAKE_WEBHOOK_URL, {
+                method: 'POST',
+                mode: 'no-cors', 
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(formData)
+            })
+            .then(() => {
+                window.location.href = 'https://chat.whatsapp.com/KtBu7mszVBOE2oMdf0bFl1';
+            })
+            .catch(() => {
+                window.location.href = 'https://chat.whatsapp.com/KtBu7mszVBOE2oMdf0bFl1';
+            });
         });
-    });
     </script>
 </body>
 </html>
