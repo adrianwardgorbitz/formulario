@@ -98,7 +98,7 @@
 
     <script>
         // TU NUEVA URL DE EXEC
-        const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzOn_1ZkbcwfUm5-SS9EDQWUSTHzAveAelrZScQKMU-sl_tJIvRlPlMS3qBG6tc2PtN/exec';
+        const MAKE_WEBHOOK_URL = 'https://hook.eu1.make.com/cmma9n6v7egfcmtdjjx85kuc72p83b3k';
         
         document.getElementById('mentorshipForm').addEventListener('submit', function(e) {
             e.preventDefault();
@@ -119,22 +119,20 @@
             };
 
             // FETCH OPTIMIZADO PARA EVITAR ERROR 400
-            fetch(SCRIPT_URL, { 
-                method: 'POST', 
-                mode: 'no-cors', // Mantiene la compatibilidad con Google Scripts
-                cache: 'no-cache',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(formData) 
-            })
-            .then(() => {
-                // Éxito: Redirigir al grupo
-                window.location.href = 'https://chat.whatsapp.com/KtBu7mszVBOE2oMdf0bFl1';
-            })
-            .catch(() => {
-                // Fallo: Redirigir igual para no perder al cliente
-                window.location.href = 'https://chat.whatsapp.com/KtBu7mszVBOE2oMdf0bFl1';
-            });
+           fetch(MAKE_WEBHOOK_URL, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(data)
+        })
+        .then(() => {
+            // Redirigir al WhatsApp después del envío exitoso
+            window.location.href = 'https://chat.whatsapp.com/KtBu7mszVBOE2oMdf0bFl1';
+        })
+        .catch(() => {
+            // Por si acaso falla algo, también redirigir
+            window.location.href = 'https://chat.whatsapp.com/KtBu7mszVBOE2oMdf0bFl1';
         });
+    });
     </script>
 </body>
 </html>
