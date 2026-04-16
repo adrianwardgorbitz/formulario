@@ -30,9 +30,13 @@
 
         .input-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
         input, select, textarea { width: 100%; background: rgba(255,255,255,0.05); border: 1px solid var(--border); padding: 16px; border-radius: 12px; color: #fff; margin-bottom: 15px; font-family: inherit; }
-        select option { background: #05070a; }
-
+        
         .btn-submit { width: 100%; padding: 20px; background: linear-gradient(90deg, var(--fuxion-blue), #007AFF); border: none; border-radius: 15px; color: #fff; font-weight: 700; font-size: 18px; cursor: pointer; text-transform: uppercase; }
+        
+        /* Contenedor de Reseñas */
+        .reviews-feed { margin-top: 30px; border-top: 1px solid var(--border); padding-top: 25px; }
+        .reviews-scroll { display: flex; flex-direction: column; gap: 15px; max-height: 500px; overflow-y: auto; padding-right: 10px; }
+        .review-img { width: 100%; border-radius: 15px; border: 1px solid var(--border); margin-bottom: 5px; }
         
         @media (max-width: 600px) { .stats-grid, .input-grid { grid-template-columns: 1fr; } }
     </style>
@@ -92,39 +96,64 @@
                 </div>
                 <textarea id="metas" placeholder="Cuéntame de ti (A qué te dedicas, tus metas, etc.)" rows="3" required></textarea>
                 <button type="submit" class="btn-submit" id="submitBtn">Enviar Aplicación</button>
-              <div style="margin-top: 25px; border-top: 1px solid var(--border); padding-top: 20px;">
-                    <details style="cursor: pointer; background: rgba(255,255,255,0.03); border-radius: 15px; padding: 10px;">
-                        <summary style="font-weight: 700; color: var(--accent); font-size: 14px; list-style: none; text-align: center;">
-                            ⭐ Ver testimonios de la Mentoría (Clic aquí)
-                        </summary>
-                        <div style="margin-top: 15px; font-size: 13px; color: #ccc;">
-                            <div style="margin-bottom: 15px; border-left: 2px solid var(--fuxion-blue); padding-left: 10px;">
-                                <p>"Gracias a Adrian logré mis primeros 20 clientes en el primer mes. ¡El asistente virtual es real!"</p>
-                                <strong style="color: #fff;">- Juan Pablo M.</strong>
-                            </div>
-                            <div style="margin-bottom: 15px; border-left: 2px solid var(--fuxion-blue); padding-left: 10px;">
-                                <p>"La claridad estratégica que recibes no tiene precio. Pasé de estar estancada a Diamante en 90 días."</p>
-                                <strong style="color: #fff;">- Maria José G.</strong>
-                            </div>
-                            <div style="margin-bottom: 5px; border-left: 2px solid var(--fuxion-blue); padding-left: 10px;">
-                                <p>"Llevaba años en redes de mercadeo, pero el sistema de Adrian es otro nivel de profesionalismo."</p>
-                                <strong style="color: #fff;">- Carlos R.</strong>
-                            </div>
-                        </div>
-                    </details>
-                </div>
             </form>
+
+            <div class="reviews-feed">
+                <h4 style="text-align: center; color: var(--accent); font-size: 14px; margin-bottom: 20px; text-transform: uppercase;">💎 Resultados de la Comunidad</h4>
+                <div id="dynamic-reviews-container" class="reviews-scroll">
+                    <p id="loading-msg" style="text-align: center; font-size: 12px; color: #666;">Cargando testimonios...</p>
+                </div>
+            </div>
         </section>
     </div>
 
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+
     <script>
+        // Configuración de tu Firebase de Degustaciones
+        const firebaseConfig = {
+            apiKey: "AIzaSyBZ1iquQo-rcaI25-eStS8ZhwYI-lugCLk",
+            authDomain: "degustaciones.firebaseapp.com",
+            projectId: "degustaciones",
+            storageBucket: "degustaciones.firebasestorage.app",
+            messagingSenderId: "80590754347",
+            appId: "1:80590754347:web:982cd91a00ddccc7f1106e"
+        };
+
+        firebase.initializeApp(firebaseConfig);
+        const db = firebase.firestore();
+
+        // 1. Cargar Reviews de Firebase (Solo Lectura)
+        async function loadReviews() {
+            const container = document.getElementById('dynamic-reviews-container');
+            try {
+                const snap = await db.collection('reviews').orderBy('timestamp', 'desc').limit(20).get();
+                document.getElementById('loading-msg').style.display = 'none';
+                
+                snap.forEach(doc => {
+                    const data = doc.data();
+                    const photos = data.photoUrls || (data.photoUrl ? [data.photoUrl] : []);
+                    
+                    photos.forEach(url => {
+                        const img = document.createElement('img');
+                        img.src = url;
+                        img.className = 'review-img';
+                        container.appendChild(img);
+                    });
+                });
+            } catch (e) {
+                console.log("Error cargando:", e);
+            }
+        }
+
+        // 2. Enviar Formulario a Make
         const MAKE_WEBHOOK_URL = 'https://hook.eu1.make.com/cmma9n6v7egfcmtdjjx85kuc72p83b3k';
         
         document.getElementById('mentorshipForm').addEventListener('submit', function(e) {
             e.preventDefault();
             const btn = document.getElementById('submitBtn');
-            btn.disabled = true; 
-            btn.innerHTML = 'Enviando...';
+            btn.disabled = true; btn.innerHTML = 'Enviando...';
 
             const formData = {
                 nombre: document.getElementById('nombre').value,
@@ -136,7 +165,7 @@
                 gusto: document.getElementById('gusto').value,
                 disponibilidad: document.getElementById('disponibilidad').value,
                 ritmo: document.getElementById('ritmo').value,
-                sobre_ellos: document.getElementById('metas').value // He cambiado 'experiencia' por 'sobre_ellos' para que coincida con tu Make
+                sobre_ellos: document.getElementById('metas').value
             };
 
             fetch(MAKE_WEBHOOK_URL, {
@@ -144,14 +173,11 @@
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(formData)
             })
-            .then(() => {
-                window.location.href = 'https://chat.whatsapp.com/KtBu7mszVBOE2oMdf0bFl1';
-            })
-            .catch(() => {
-                // Redirigimos igual para que el usuario no se quede bloqueado si hay un delay
-                window.location.href = 'https://chat.whatsapp.com/KtBu7mszVBOE2oMdf0bFl1';
-            });
+            .then(() => { window.location.href = 'https://chat.whatsapp.com/KtBu7mszVBOE2oMdf0bFl1'; })
+            .catch(() => { window.location.href = 'https://chat.whatsapp.com/KtBu7mszVBOE2oMdf0bFl1'; });
         });
+
+        window.onload = loadReviews;
     </script>
 </body>
 </html>
