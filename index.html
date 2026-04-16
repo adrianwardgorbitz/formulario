@@ -115,12 +115,11 @@
                 gusto: document.getElementById('gusto').value,
                 disponibilidad: document.getElementById('disponibilidad').value,
                 ritmo: document.getElementById('ritmo').value,
-                experiencia: document.getElementById('metas').value
+                sobre_ellos: document.getElementById('metas').value // He cambiado 'experiencia' por 'sobre_ellos' para que coincida con tu Make
             };
 
             fetch(MAKE_WEBHOOK_URL, {
                 method: 'POST',
-                mode: 'no-cors', 
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(formData)
             })
@@ -128,6 +127,7 @@
                 window.location.href = 'https://chat.whatsapp.com/KtBu7mszVBOE2oMdf0bFl1';
             })
             .catch(() => {
+                // Redirigimos igual para que el usuario no se quede bloqueado si hay un delay
                 window.location.href = 'https://chat.whatsapp.com/KtBu7mszVBOE2oMdf0bFl1';
             });
         });
