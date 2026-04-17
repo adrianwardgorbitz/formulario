@@ -3,60 +3,72 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Diamond Mentorship - Adrian Ward</title>
+    
+    <title>The Diamond Mentorship - Adrian Ward | Programa de Alto Rendimiento</title>
+    <meta name="description" content="Aplica a la mentoría exclusiva de Adrian Ward. Aprende a escalar tu negocio FuXion al nivel Diamante con estrategias de ventas y liderazgo global.">
+    <meta name="keywords" content="Adrian Ward, FuXion, Mentoria, Negocios, Hall Millonario, Libertad Financiera, Diamante">
+    <link rel="canonical" href="https://adrianward.es">
+    
+    <meta property="og:title" content="The Diamond Mentorship - Adrian Ward">
+    <meta property="og:description" content="¿Listo para el siguiente nivel en FuXion? Aplica aquí a mi programa de mentoría.">
+    <meta property="og:image" content="https://adrianwardgorbitz.github.io/reviews/logo-diamond.jpg"> <meta property="og:type" content="website">
+    <meta property="og:url" content="https://adrianward.es">
+
+    <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/3258/3258502.png" type="image/png">
+    
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
+    
     <style>
         :root { --fuxion-blue: #0033A0; --accent: #00d4ff; --bg: #05070a; --border: rgba(255,255,255,0.15); }
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Poppins', sans-serif; background-color: var(--bg); color: #fff; line-height: 1.6; }
+        body { font-family: 'Poppins', sans-serif; background-color: var(--bg); color: #fff; line-height: 1.6; color-scheme: dark; }
         .container { max-width: 800px; margin: 0 auto; padding: 40px 20px; }
-        .hero h1 { text-align: center; font-size: clamp(32px, 8vw, 50px); font-weight: 800; margin-bottom: 30px; }
         
+        .hero h1 { text-align: center; font-size: clamp(28px, 7vw, 45px); font-weight: 800; margin-bottom: 30px; letter-spacing: -1px; }
+        
+        /* Stats */
         .stats-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; margin-bottom: 40px; }
         .stat-card { background: rgba(255,255,255,0.03); border: 1px solid var(--border); padding: 20px; border-radius: 20px; text-align: center; }
-        .stat-number { display: block; font-size: 24px; font-weight: 800; }
+        .stat-number { display: block; font-size: 22px; font-weight: 800; color: #fff; }
         .stat-label { font-size: 10px; color: var(--accent); text-transform: uppercase; font-weight: 600; }
 
-        .video-container { position: relative; padding-bottom: 56.25%; height: 0; border-radius: 25px; overflow: hidden; margin-bottom: 40px; border: 1px solid var(--border); }
+        /* Video */
+        .video-container { position: relative; padding-bottom: 56.25%; height: 0; border-radius: 25px; overflow: hidden; margin-bottom: 40px; border: 1px solid var(--border); box-shadow: 0 20px 50px rgba(0,0,0,0.5); }
         .video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
 
-        .glass-card { background: rgba(17,24,39,0.95); border: 1px solid var(--border); border-radius: 35px; padding: 30px; }
+        /* Bio */
+        .bio-section { background: linear-gradient(145deg, rgba(0,51,160,0.1), rgba(17,24,39,0.8)); border: 1px solid var(--fuxion-blue); border-radius: 25px; padding: 25px; margin-bottom: 40px; text-align: center; }
+        .badge { display: inline-block; padding: 4px 12px; background: var(--fuxion-blue); border-radius: 50px; font-size: 10px; font-weight: 700; margin-bottom: 10px; text-transform: uppercase; }
+
+        /* Content Extra para SEO */
+        .content-extra { margin-bottom: 40px; padding: 0 10px; }
+        .content-extra h2 { color: var(--accent); font-size: 22px; margin-bottom: 15px; }
+        .content-extra p { font-size: 15px; color: #ccc; margin-bottom: 15px; }
+
+        /* Form Card */
+        .glass-card { background: rgba(17,24,39,0.95); border: 1px solid var(--border); border-radius: 30px; padding: 30px; }
         .input-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
-       input, select, textarea { 
-            width: 100%; 
-            background: rgba(255,255,255,0.05); 
-            border: 1px solid var(--border); 
-            padding: 16px; 
-            border-radius: 12px; 
-            color: #fff; 
-            margin-bottom: 15px; 
-            font-family: inherit;
-            color-scheme: dark; /* Esto ayuda a que el navegador entienda que es un tema oscuro */
-        }
-
-        /* Fuerza a que las opciones del desplegable no salgan blancas */
-        select option {
-            background: #05070a;
-            color: #fff;
-        } 
-        .btn-submit { width: 100%; padding: 20px; background: linear-gradient(90deg, var(--fuxion-blue), #007AFF); border: none; border-radius: 15px; color: #fff; font-weight: 700; font-size: 18px; cursor: pointer; text-transform: uppercase; transition: 0.3s; }
-        .btn-submit:hover { opacity: 0.9; transform: scale(1.02); }
-
-        /* Estilos del Dropdown de Reseñas */
-        .reviews-dropdown { margin-top: 30px; border-top: 1px solid var(--border); padding-top: 10px; }
-        details { background: rgba(255,255,255,0.03); border-radius: 20px; padding: 10px; cursor: pointer; }
-        summary { font-weight: 700; color: var(--accent); text-align: center; padding: 15px; list-style: none; }
+        input, select, textarea { width: 100%; background: rgba(255,255,255,0.07); border: 1px solid var(--border); padding: 16px; border-radius: 12px; color: #fff; margin-bottom: 15px; font-size: 14px; outline: none; transition: 0.3s; }
+        input:focus, select:focus, textarea:focus { border-color: var(--accent); background: rgba(255,255,255,0.1); }
         
-        .reviews-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 20px; max-height: 500px; overflow-y: auto; padding: 5px; }
-        .review-item { background: rgba(255,255,255,0.05); padding: 12px; border-radius: 15px; border: 1px solid var(--border); }
-        .review-img { width: 100%; aspect-ratio: 1/1; object-fit: cover; border-radius: 10px; margin-bottom: 8px; }
+        .btn-submit { width: 100%; padding: 20px; background: linear-gradient(90deg, var(--fuxion-blue), #007AFF); border: none; border-radius: 15px; color: #fff; font-weight: 700; font-size: 16px; cursor: pointer; text-transform: uppercase; transition: 0.3s; }
+        .btn-submit:hover { transform: translateY(-3px); box-shadow: 0 15px 30px rgba(0,51,160,0.4); }
+
+        /* Testimonios Dropdown */
+        .reviews-dropdown { margin-top: 30px; border-top: 1px solid var(--border); padding-top: 10px; }
+        details { background: rgba(255,255,255,0.03); border-radius: 20px; padding: 5px; cursor: pointer; }
+        summary { font-weight: 700; color: var(--accent); text-align: center; padding: 15px; list-style: none; font-size: 13px; }
+        .reviews-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 10px; max-height: 550px; overflow-y: auto; padding: 10px; }
+        .review-item { background: rgba(255,255,255,0.04); padding: 12px; border-radius: 15px; border: 1px solid var(--border); }
+        .review-img { width: 100%; aspect-ratio: 1/1; object-fit: cover; border-radius: 10px; margin-bottom: 8px; border: 1px solid rgba(255,255,255,0.05); }
         .review-name { font-size: 11px; font-weight: 700; color: var(--accent); display: block; }
-        .review-text { font-size: 10px; color: #ccc; font-style: italic; line-height: 1.3; margin-top: 4px; }
+        .review-text { font-size: 10px; color: #aaa; font-style: italic; margin-top: 4px; line-height: 1.4; }
 
         @media (max-width: 600px) { .stats-grid, .input-grid, .reviews-grid { grid-template-columns: 1fr; } }
     </style>
 </head>
 <body>
+
     <div class="container">
         <header class="hero"><h1>The Diamond Mentorship</h1></header>
 
@@ -70,6 +82,18 @@
             <iframe src="https://www.youtube.com/embed/U33TC3cmd5E" allowfullscreen></iframe>
         </div>
 
+        <section class="bio-section">
+            <span class="badge">Tu Mentor</span>
+            <h3>Adrian Ward</h3>
+            <p style="font-size: 14px; opacity: 0.8; margin-top: 10px;">Más de 12 años en la industria, miembro del Hall Millonario y Top Producer global de FuXion.</p>
+        </section>
+
+        <section class="content-extra">
+            <h2>Escala tu Negocio al Siguiente Nivel</h2>
+            <p>La mentoría Diamond es un programa diseñado para emprendedores que buscan resultados reales. A través de este sistema, Adrian Ward comparte las estrategias exactas que han generado millones en ventas anuales.</p>
+            <p>Aprenderás a construir una organización sólida, gestionar tu tiempo como un Top Producer y dominar las habilidades de liderazgo necesarias para alcanzar el rango Diamante.</p>
+        </section>
+
         <section class="glass-card">
             <form id="mentorshipForm">
                 <div class="input-grid">
@@ -77,12 +101,12 @@
                     <input type="email" id="email" placeholder="Email" required>
                 </div>
                 <div class="input-grid">
-                    <input type="tel" id="whatsapp" placeholder="WhatsApp" required>
-                    <input type="text" id="instagram" placeholder="Instagram (Opcional)">
+                    <input type="tel" id="whatsapp" placeholder="WhatsApp (Ej: +34...)" required>
+                    <input type="text" id="instagram" placeholder="Usuario de Instagram">
                 </div>
                 <div class="input-grid">
                     <input type="number" id="edad" placeholder="Edad" required>
-                    <input type="text" id="ciudad" placeholder="Ciudad / País" required>
+                    <input type="text" id="ciudad" placeholder="Ciudad y País" required>
                 </div>
                 <textarea id="gusto" placeholder="¿Qué fue lo que más te gustó del video?" rows="2" required></textarea>
                 <div class="input-grid">
@@ -90,23 +114,23 @@
                         <option value="" disabled selected>Horas semanales</option>
                         <option value="5-10">5-10 h</option>
                         <option value="10-20">10-20 h</option>
-                        <option value="20+">20h+ (Full Focus)</option>
+                        <option value="20+">Tiempo completo</option>
                     </select>
                     <select id="ritmo" required>
-                        <option value="" disabled selected>Nivel de Compromiso</option>
+                        <option value="" disabled selected>Nivel de enfoque</option>
                         <option value="Rápido">Velocidad Diamante 🚀</option>
                         <option value="Moderado">Construcción Sólida ⚡</option>
                     </select>
                 </div>
-                <textarea id="metas" placeholder="Cuéntame de ti (A qué te dedicas, tus metas, etc.)" rows="3" required></textarea>
+                <textarea id="metas" placeholder="¿Cuáles son tus metas principales?" rows="3" required></textarea>
                 <button type="submit" class="btn-submit" id="submitBtn">Enviar Aplicación</button>
             </form>
 
             <div class="reviews-dropdown">
                 <details>
-                    <summary>⭐ Ver Resultados Reales (Clic aquí)</summary>
+                    <summary>⭐ VER RESULTADOS DE LA COMUNIDAD (Clic aquí)</summary>
                     <div id="reviewsGrid" class="reviews-grid">
-                        <p id="loading" style="grid-column: 1/-1; text-align: center; font-size: 12px; color: #666;">Cargando...</p>
+                        <p id="loading" style="grid-column: 1/-1; text-align: center; font-size: 11px; color: #666; padding: 20px;">Cargando testimonios reales de Firebase...</p>
                     </div>
                 </details>
             </div>
@@ -117,6 +141,13 @@
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
 
     <script>
+        // CONFIGURACIÓN TUS ENLACES REALES
+        const MENTOR_DATA = {
+            webhook: "https://hook.eu1.make.com/cmma9n6v7egfcmtdjjx85kuc72p83b3k",
+            whatsapp: "https://chat.whatsapp.com/KtBu7mszVBOE2oMdf0bFl1"
+        };
+
+        // Firebase (Reseñas Centralizadas)
         const firebaseConfig = {
             apiKey: "AIzaSyBZ1iquQo-rcaI25-eStS8ZhwYI-lugCLk",
             authDomain: "degustaciones.firebaseapp.com",
@@ -128,11 +159,10 @@
         firebase.initializeApp(firebaseConfig);
         const db = firebase.firestore();
 
-        // Cargar Reseñas desde Firebase
         async function loadReviews() {
             const grid = document.getElementById('reviewsGrid');
             try {
-                const snap = await db.collection('reviews').orderBy('timestamp', 'desc').limit(16).get();
+                const snap = await db.collection('reviews').orderBy('timestamp', 'desc').limit(20).get();
                 document.getElementById('loading').style.display = 'none';
                 snap.forEach(doc => {
                     const d = doc.data();
@@ -148,14 +178,14 @@
                         grid.appendChild(div);
                     }
                 });
-            } catch (e) { console.error(e); }
+            } catch (e) { console.error("Error Firebase:", e); }
         }
 
         // Envío a Make
         document.getElementById('mentorshipForm').addEventListener('submit', async (e) => {
             e.preventDefault();
             const btn = document.getElementById('submitBtn');
-            btn.disabled = true; btn.innerText = 'Enviando...';
+            btn.disabled = true; btn.innerText = 'PROCESANDO...';
             
             const payload = {
                 nombre: document.getElementById('nombre').value,
@@ -167,18 +197,18 @@
                 gusto: document.getElementById('gusto').value,
                 disponibilidad: document.getElementById('disponibilidad').value,
                 ritmo: document.getElementById('ritmo').value,
-                sobre_ellos: document.getElementById('metas').value
+                metas: document.getElementById('metas').value
             };
 
             try {
-                await fetch('https://hook.eu1.make.com/cmma9n6v7egfcmtdjjx85kuc72p83b3k', {
-                    method: 'POST',
-                    headers: {'Content-Type': 'application/json'},
-                    body: JSON.stringify(payload)
+                await fetch(MENTOR_DATA.webhook, { 
+                    method: 'POST', 
+                    headers: {'Content-Type': 'application/json'}, 
+                    body: JSON.stringify(payload) 
                 });
-                window.location.href = 'https://chat.whatsapp.com/KtBu7mszVBOE2oMdf0bFl1';
-            } catch (err) {
-                window.location.href = 'https://chat.whatsapp.com/KtBu7mszVBOE2oMdf0bFl1';
+                window.location.href = MENTOR_DATA.whatsapp;
+            } catch (err) { 
+                window.location.href = MENTOR_DATA.whatsapp; 
             }
         });
 
