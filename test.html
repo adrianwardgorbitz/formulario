@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <title>The Diamond Mentorship - Adrian Ward</title>
-    <meta name="description" content="Aplica para agendar una sesión estratégica con Adrian Ward y abre tu negocio FuXion.">
+    <meta name="description" content="Aplica para agendar una sesión estratégica con Adrian Ward.">
     <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/3258/3258502.png" type="image/png">
     
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
@@ -27,35 +27,27 @@
 
         .bio-section { background: linear-gradient(145deg, rgba(0,51,160,0.1), rgba(17,24,39,0.8)); border: 1px solid var(--fuxion-blue); border-radius: 25px; padding: 25px; margin-bottom: 40px; text-align: center; }
 
-        /* Estilos Formulario */
-        .glass-card { background: rgba(17,24,39,0.95); border: 1px solid var(--border); border-radius: 30px; padding: 30px; min-height: 400px; }
+        .glass-card { background: rgba(17,24,39,0.95); border: 1px solid var(--border); border-radius: 30px; padding: 30px; }
         .input-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
         
         input, select, textarea { 
-            width: 100%; 
-            background: #161b22 !important; 
-            border: 1px solid var(--border); 
-            padding: 16px; 
-            border-radius: 12px; 
-            color: #fff !important; 
-            margin-bottom: 15px; 
-            font-size: 14px; 
-            outline: none;
-            font-family: inherit;
+            width: 100%; background: #161b22 !important; border: 1px solid var(--border); padding: 16px; border-radius: 12px; color: #fff !important; margin-bottom: 15px; font-size: 14px; outline: none; font-family: inherit;
         }
-        select option { background: #0d1117; color: #fff; }
 
-        .btn-submit { width: 100%; padding: 20px; background: linear-gradient(90deg, var(--fuxion-blue), #007AFF); border: none; border-radius: 15px; color: #fff; font-weight: 700; font-size: 16px; cursor: pointer; text-transform: uppercase; transition: 0.3s; }
+        .btn-submit { width: 100%; padding: 20px; background: linear-gradient(90deg, var(--fuxion-blue), #007AFF); border: none; border-radius: 15px; color: #fff; font-weight: 700; font-size: 16px; cursor: pointer; text-transform: uppercase; margin-bottom: 25px; }
         
+        /* LOS DOS BOTONES NUEVOS */
+        .secondary-btns-container { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 10px; }
+        .btn-link { 
+            padding: 15px; background: transparent; border: 2px solid var(--accent); border-radius: 15px; color: var(--accent); font-weight: 700; font-size: 13px; text-decoration: none; text-align: center; text-transform: uppercase; transition: 0.3s;
+        }
+        .btn-link:hover { background: rgba(0, 212, 255, 0.1); }
+
         #calendly-container { display: none; margin-top: 20px; }
 
-        .reviews-dropdown { margin-top: 30px; border-top: 1px solid var(--border); padding-top: 10px; }
-        details { background: rgba(255,255,255,0.03); border-radius: 20px; padding: 5px; cursor: pointer; }
-        summary { font-weight: 700; color: var(--accent); text-align: center; padding: 15px; list-style: none; font-size: 13px; }
-        .reviews-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 10px; max-height: 500px; overflow-y: auto; padding: 10px; }
-        .review-item { background: rgba(255,255,255,0.04); padding: 12px; border-radius: 15px; border: 1px solid var(--border); }
-
-        @media (max-width: 600px) { .stats-grid, .input-grid, .reviews-grid { grid-template-columns: 1fr; } }
+        @media (max-width: 600px) { 
+            .stats-grid, .input-grid, .secondary-btns-container { grid-template-columns: 1fr; } 
+        }
     </style>
 </head>
 <body>
@@ -75,7 +67,7 @@
 
         <section class="bio-section">
             <h3 id="form-title">Paso 1: Completa tu Perfil</h3>
-            <p id="form-subtitle" style="font-size: 14px; opacity: 0.8;">Capturando tus datos para la sesión estratégica...</p>
+            <p id="form-subtitle" style="font-size: 14px; opacity: 0.8;">Inicia tu proceso de selección aquí.</p>
         </section>
 
         <section class="glass-card">
@@ -107,72 +99,35 @@
                     </select>
                 </div>
                 <textarea id="metas" placeholder="Cuéntame tus metas..." rows="3" required></textarea>
+                
                 <button type="submit" class="btn-submit" id="submitBtn">ENVIAR APLICACIÓN</button>
             </form>
+
+            <div class="secondary-btns-container" id="extra-actions">
+                <a href="https://adrianwardgorbitz.github.io/liderazgo" target="_blank" class="btn-link">Test de Liderazgo</a>
+                <a href="https://adrianwardgorbitz.github.io/cuestionario" target="_blank" class="btn-link">Cuestionario</a>
+            </div>
 
             <div id="calendly-container">
                 <div class="calendly-inline-widget" data-url="https://calendly.com/adrianward_/15min" style="min-width:320px;height:700px;"></div>
                 <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
             </div>
-
-            <div class="reviews-dropdown" id="reviews-box">
-                <details>
-                    <summary>⭐ VER RESULTADOS DE LA COMUNIDAD</summary>
-                    <div id="reviewsGrid" class="reviews-grid">
-                        <p id="loading" style="text-align: center; font-size: 11px; padding: 20px;">Cargando...</p>
-                    </div>
-                </details>
-            </div>
         </section>
     </div>
-
-    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
 
     <script>
         const CONFIG = { 
             webhook: "https://hook.eu1.make.com/cmma9n6v7egfcmtdjjx85kuc72p83b3k",
-            whatsapp_link: "https://chat.whatsapp.com/KtBu7mszVBOE2oMdf0bFl1" // Tu enlace de grupo o chat personal
+            whatsapp_link: "https://chat.whatsapp.com/KtBu7mszVBOE2oMdf0bFl1"
         };
-
-        // Firebase
-        const firebaseConfig = {
-            apiKey: "AIzaSyBZ1iquQo-rcaI25-eStS8ZhwYI-lugCLk",
-            authDomain: "degustaciones.firebaseapp.com",
-            projectId: "degustaciones",
-            storageBucket: "degustaciones.firebasestorage.app",
-            messagingSenderId: "80590754347",
-            appId: "1:80590754347:web:982cd91a00ddccc7f1106e"
-        };
-        firebase.initializeApp(firebaseConfig);
-        const db = firebase.firestore();
-
-        async function loadReviews() {
-            const grid = document.getElementById('reviewsGrid');
-            try {
-                const snap = await db.collection('reviews').orderBy('timestamp', 'desc').limit(20).get();
-                document.getElementById('loading').style.display = 'none';
-                snap.forEach(doc => {
-                    const d = doc.data();
-                    const photos = d.photoUrls || (d.photoUrl ? [d.photoUrl] : []);
-                    if(photos.length > 0) {
-                        const div = document.createElement('div');
-                        div.className = 'review-item';
-                        div.innerHTML = `<img src="${photos[0]}" style="width:100%; border-radius:10px;"><p style="font-size:10px; margin-top:5px;">${d.name || 'Socio'}</p>`;
-                        grid.appendChild(div);
-                    }
-                });
-            } catch (e) { console.error(e); }
-        }
 
         document.getElementById('mentorshipForm').addEventListener('submit', async (e) => {
             e.preventDefault();
             const btn = document.getElementById('submitBtn');
-            const nombreLead = document.getElementById('nombre').value;
-            btn.disabled = true; btn.innerText = 'CONECTANDO...';
+            btn.disabled = true; btn.innerText = 'ENVIANDO...';
             
             const payload = {
-                nombre: nombreLead,
+                nombre: document.getElementById('nombre').value,
                 email: document.getElementById('email').value,
                 whatsapp: document.getElementById('whatsapp').value,
                 instagram: document.getElementById('instagram').value,
@@ -185,28 +140,20 @@
             };
 
             try {
-                // 1. Enviar datos a Make
                 await fetch(CONFIG.webhook, { method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify(payload) });
-                
-                // 2. Abrir WhatsApp en pestaña nueva
-                // Personaliza el mensaje si quieres: ?text=Hola Adrian, acabo de aplicar...
                 window.open(CONFIG.whatsapp_link, '_blank');
 
-                // 3. Mostrar Calendly en la página actual
+                // Ocultar todo y mostrar Calendly
                 document.getElementById('mentorshipForm').style.display = 'none';
-                document.getElementById('reviews-box').style.display = 'none';
-                document.getElementById('form-title').innerText = '¡Casi listo, ' + nombreLead + '!';
-                document.getElementById('form-subtitle').innerText = 'Revisa tu WhatsApp y luego agenda aquí abajo tu sesión de 15 min.';
+                document.getElementById('extra-actions').style.display = 'none';
+                document.getElementById('form-title').innerText = '¡Aplicación Enviada!';
+                document.getElementById('form-subtitle').innerText = 'Agenda tu sesión de 15 min aquí abajo.';
                 document.getElementById('calendly-container').style.display = 'block';
                 
             } catch (err) { 
                 window.open(CONFIG.whatsapp_link, '_blank');
-                document.getElementById('mentorshipForm').style.display = 'none';
-                document.getElementById('calendly-container').style.display = 'block';
             }
         });
-
-        window.onload = loadReviews;
     </script>
 </body>
 </html>
