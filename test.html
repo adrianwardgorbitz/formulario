@@ -3,12 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <title>The Diamond Mentorship - Adrian Ward</title>
-    <meta name="description" content="Aplica para agendar una sesión estratégica de 15 minutos con Adrian Ward y abre tu negocio FuXion.">
-    <link rel="canonical" href="https://adrianward.es">
+    <title>Evaluación de Perfil - Adrian Ward</title>
     <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/3258/3258502.png" type="image/png">
-    
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root { --fuxion-blue: #0033A0; --accent: #00d4ff; --bg: #05070a; --border: rgba(255,255,255,0.15); }
@@ -16,67 +12,51 @@
         body { font-family: 'Poppins', sans-serif; background-color: var(--bg); color: #fff; line-height: 1.6; color-scheme: dark; }
         .container { max-width: 800px; margin: 0 auto; padding: 40px 20px; }
         
-        .hero h1 { text-align: center; font-size: clamp(28px, 7vw, 45px); font-weight: 800; margin-bottom: 30px; letter-spacing: -1px; }
-        
-        /* Stats */
+        /* CABECERA */
+        .hero h1 { text-align: center; font-size: clamp(26px, 6vw, 40px); font-weight: 800; margin-bottom: 30px; letter-spacing: 1px; text-transform: uppercase; line-height: 1.2; }
+        .hero span { color: var(--accent); display: block; font-size: 0.5em; letter-spacing: 4px; }
+
         .stats-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; margin-bottom: 40px; }
         .stat-card { background: rgba(255,255,255,0.03); border: 1px solid var(--border); padding: 20px; border-radius: 20px; text-align: center; }
         .stat-number { display: block; font-size: 22px; font-weight: 800; color: #fff; }
         .stat-label { font-size: 10px; color: var(--accent); text-transform: uppercase; font-weight: 600; }
 
-        /* Video */
-        .video-container { position: relative; padding-bottom: 56.25%; height: 0; border-radius: 25px; overflow: hidden; margin-bottom: 40px; border: 1px solid var(--border); box-shadow: 0 20px 50px rgba(0,0,0,0.5); }
+        .video-container { position: relative; padding-bottom: 56.25%; height: 0; border-radius: 25px; overflow: hidden; margin-bottom: 40px; border: 1px solid var(--border); }
         .video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
 
-        /* Bio */
         .bio-section { background: linear-gradient(145deg, rgba(0,51,160,0.1), rgba(17,24,39,0.8)); border: 1px solid var(--fuxion-blue); border-radius: 25px; padding: 25px; margin-bottom: 40px; text-align: center; }
-        .badge { display: inline-block; padding: 4px 12px; background: var(--fuxion-blue); border-radius: 50px; font-size: 10px; font-weight: 700; margin-bottom: 10px; text-transform: uppercase; }
 
-        /* Formulario con Dropdowns Oscuros */
         .glass-card { background: rgba(17,24,39,0.95); border: 1px solid var(--border); border-radius: 30px; padding: 30px; }
-        .input-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
-        
+        .section-tag { color: var(--accent); font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 10px; display: block; }
+
         input, select, textarea { 
-            width: 100%; 
-            background: #161b22 !important; /* Fondo oscuro sólido para evitar transparencias raras */
-            border: 1px solid var(--border); 
-            padding: 16px; 
-            border-radius: 12px; 
-            color: #fff !important; 
-            margin-bottom: 15px; 
-            font-size: 14px; 
-            outline: none;
-            font-family: inherit;
-            -webkit-appearance: none; /* Elimina estilos por defecto en iOS */
+            width: 100%; background: #161b22 !important; border: 1px solid var(--border); padding: 16px; border-radius: 12px; color: #fff !important; margin-bottom: 15px; font-size: 14px; outline: none; font-family: inherit;
         }
 
-        /* Color de las letras dentro de la lista desplegable */
-        select option { 
-            background: #0d1117; 
-            color: #fff; 
+        /* BOTÓN TEST DE LIDERAZGO */
+        .btn-submit { width: 100%; padding: 20px; background: linear-gradient(90deg, var(--fuxion-blue), #007AFF); border: none; border-radius: 15px; color: #fff; font-weight: 700; font-size: 16px; cursor: pointer; text-transform: uppercase; transition: 0.3s; margin-bottom: 25px; box-shadow: 0 10px 20px rgba(0,51,160,0.3); }
+        
+        /* BOTÓN TEST DE ESTILO DE VIDA */
+        .btn-tests { 
+            width: 100%; padding: 15px; background: transparent; border: 2px solid var(--accent); border-radius: 15px; color: var(--accent); font-weight: 800; font-size: 14px; cursor: pointer; text-transform: uppercase; transition: 0.3s; display: flex; align-items: center; justify-content: center; gap: 10px;
         }
 
-        .btn-submit { width: 100%; padding: 20px; background: linear-gradient(90deg, var(--fuxion-blue), #007AFF); border: none; border-radius: 15px; color: #fff; font-weight: 700; font-size: 16px; cursor: pointer; text-transform: uppercase; transition: 0.3s; }
-        .btn-submit:hover { transform: translateY(-3px); box-shadow: 0 15px 30px rgba(0,51,160,0.4); }
+        #calendly-container { display: none; margin-top: 20px; }
+        .reviews-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 15px; max-height: 500px; overflow-y: auto; padding: 10px; }
+        .review-item { background: rgba(255,255,255,0.04); padding: 12px; border-radius: 15px; border: 1px solid var(--border); text-align: center; }
 
-        /* Reseñas */
-        .reviews-dropdown { margin-top: 30px; border-top: 1px solid var(--border); padding-top: 10px; }
-        details { background: rgba(255,255,255,0.03); border-radius: 20px; padding: 5px; cursor: pointer; }
-        summary { font-weight: 700; color: var(--accent); text-align: center; padding: 15px; list-style: none; font-size: 13px; }
-        .reviews-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 10px; max-height: 550px; overflow-y: auto; padding: 10px; }
-        .review-item { background: rgba(255,255,255,0.04); padding: 12px; border-radius: 15px; border: 1px solid var(--border); }
-        .review-img { width: 100%; aspect-ratio: 1/1; object-fit: cover; border-radius: 10px; margin-bottom: 8px; }
-
-        @media (max-width: 600px) { .stats-grid, .input-grid, .reviews-grid { grid-template-columns: 1fr; } }
+        @media (max-width: 600px) { .stats-grid, .reviews-grid { grid-template-columns: 1fr; } }
     </style>
 </head>
 <body>
 
     <div class="container">
-        <header class="hero"><h1>The Diamond Mentorship</h1></header>
+        <header class="hero">
+            <h1><span>SISTEMA DE EXPANSIÓN</span>TEST DE LIDERAZGO</h1>
+        </header>
 
         <div class="stats-grid">
-            <div class="stat-card"><span class="stat-number">$8M</span><span class="stat-label">Ventas Anuales</span></div>
+            <div class="stat-card"><span class="stat-number">$8M</span><span class="stat-label">Ventas</span></div>
             <div class="stat-card"><span class="stat-number">20k+</span><span class="stat-label">Clientes</span></div>
             <div class="stat-card"><span class="stat-number">TOP</span><span class="stat-label">Hall Millonario</span></div>
         </div>
@@ -86,50 +66,49 @@
         </div>
 
         <section class="bio-section">
-            <span class="badge">Sesión Estratégica</span>
-            <h3>Adrian Ward</h3>
-            <p style="font-size: 14px; opacity: 0.8; margin-top: 10px;">Aplica para agendar una reunión de 15 min y evaluar tu perfil para la apertura de negocio en nuestro equipo.</p>
+            <span class="section-tag">Fase 1</span>
+            <h3 id="form-title">Cuestionario de Aplicación</h3>
+            <p id="form-subtitle" style="font-size: 14px; opacity: 0.8;">Tu perfil será evaluado para la apertura de mercado.</p>
         </section>
 
         <section class="glass-card">
             <form id="mentorshipForm">
-                <div class="input-grid">
-                    <input type="text" id="nombre" placeholder="Nombre completo" required>
-                    <input type="email" id="email" placeholder="Email" required>
+                <input type="text" id="nombre" placeholder="Nombre completo" required>
+                <div style="display: flex; gap: 10px;">
+                    <input type="tel" id="whatsapp" placeholder="WhatsApp" required style="flex: 2;">
+                    <input type="number" id="edad" placeholder="Edad" style="flex: 1;">
                 </div>
-                <div class="input-grid">
-                    <input type="tel" id="whatsapp" placeholder="WhatsApp" required>
-                    <input type="text" id="instagram" placeholder="Instagram">
-                </div>
-                <div class="input-grid">
-                    <input type="number" id="edad" placeholder="Edad" required>
-                    <input type="text" id="ciudad" placeholder="Ciudad / País" required>
-                </div>
-                <textarea id="gusto" placeholder="¿Qué fue lo que más te gustó del video?" rows="2" required></textarea>
-                <div class="input-grid">
-                    <select id="disponibilidad" required>
-                        <option value="" disabled selected>Horas semanales</option>
-                        <option value="5-10">5-10 horas</option>
-                        <option value="10-20">10-20 horas</option>
-                        <option value="20+">Full Focus (20h+)</option>
-                    </select>
-                    <select id="ritmo" required>
-                        <option value="" disabled selected>Compromiso</option>
-                        <option value="Rápido">Velocidad Diamante 🚀</option>
-                        <option value="Moderado">Construcción Sólida ⚡</option>
-                    </select>
-                </div>
-                <textarea id="metas" placeholder="Cuéntame de ti (A qué te dedicas, tus metas, etc.)" rows="3" required></textarea>
-                <button type="submit" class="btn-submit" id="submitBtn">CONTINUAR Y AGENDAR REUNIÓN</button>
+                <input type="text" id="ciudad" placeholder="Ciudad / País" required>
+                
+                <select id="disponibilidad" required>
+                    <option value="" disabled selected>Disponibilidad horaria</option>
+                    <option value="5-10">5 a 10 horas/semana</option>
+                    <option value="10-20">10 a 20 horas/semana</option>
+                    <option value="20+">Full Focus (Enfoque Total)</option>
+                </select>
+
+                <textarea id="metas" placeholder="¿Por qué deberías ser seleccionado?" rows="3" required></textarea>
+                
+                <button type="submit" class="btn-submit" id="submitBtn">ENVIAR TEST DE LIDERAZGO</button>
             </form>
 
-            <div class="reviews-dropdown">
-                <details>
-                    <summary>⭐ VER RESULTADOS DE LA COMUNIDAD (Clic aquí)</summary>
-                    <div id="reviewsGrid" class="reviews-grid">
-                        <p id="loading" style="grid-column: 1/-1; text-align: center; font-size: 11px; color: #666; padding: 20px;">Conectando con resultados reales...</p>
-                    </div>
-                </details>
+            <div id="calendly-container">
+                <div class="calendly-inline-widget" data-url="https://calendly.com/adrianward_/15min" style="min-width:320px;height:700px;"></div>
+                <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
+            </div>
+
+            <div id="tests-social-section">
+                <span class="section-tag" style="text-align: center; margin-top: 10px;">Fase 2</span>
+                <button class="btn-tests" onclick="toggleReviews()" id="btn-tests-ui">🔥 VER TEST DE ESTILO DE VIDA</button>
+
+                <div class="reviews-dropdown" id="reviews-box">
+                    <details id="details-reviews" style="display:none;">
+                        <summary></summary>
+                        <div id="reviewsGrid" class="reviews-grid">
+                            <p id="loading" style="text-align: center; font-size: 11px; padding: 20px;">Cargando pruebas...</p>
+                        </div>
+                    </details>
+                </div>
             </div>
         </section>
     </div>
@@ -138,9 +117,9 @@
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
 
     <script>
-        const CONFIG = {
+        const CONFIG = { 
             webhook: "https://hook.eu1.make.com/cmma9n6v7egfcmtdjjx85kuc72p83b3k",
-            calendly: "https://calendly.com/adrianward_/15min"
+            whatsapp: "https://chat.whatsapp.com/KtBu7mszVBOE2oMdf0bFl1"
         };
 
         const firebaseConfig = {
@@ -154,6 +133,12 @@
         firebase.initializeApp(firebaseConfig);
         const db = firebase.firestore();
 
+        function toggleReviews() {
+            const details = document.getElementById('details-reviews');
+            details.style.display = details.style.display === 'none' ? 'block' : 'none';
+            document.getElementById('btn-tests-ui').innerText = details.style.display === 'block' ? "▲ CERRAR RESULTADOS" : "🔥 VER TEST DE ESTILO DE VIDA";
+        }
+
         async function loadReviews() {
             const grid = document.getElementById('reviewsGrid');
             try {
@@ -165,7 +150,8 @@
                     if(photos.length > 0) {
                         const div = document.createElement('div');
                         div.className = 'review-item';
-                        div.innerHTML = `<img src="${photos[0]}" class="review-img"><span class="review-name">${d.name || 'Socio'}</span><p class="review-text">"${d.comment || ''}"</p>`;
+                        // Cualquier enlace dentro de las reseñas también abrirá en ventana nueva
+                        div.innerHTML = `<img src="${photos[0]}" style="width:100%; border-radius:10px;"><p style="font-size:10px; margin-top:5px; color:#00d4ff; font-weight:600;">${d.name || 'Socio'}</p>`;
                         grid.appendChild(div);
                     }
                 });
@@ -175,26 +161,35 @@
         document.getElementById('mentorshipForm').addEventListener('submit', async (e) => {
             e.preventDefault();
             const btn = document.getElementById('submitBtn');
-            btn.disabled = true; btn.innerText = 'GUARDANDO DATOS...';
+            btn.disabled = true; btn.innerText = 'CALIFICANDO...';
             
             const payload = {
+                origen: "Test Liderazgo",
                 nombre: document.getElementById('nombre').value,
-                email: document.getElementById('email').value,
                 whatsapp: document.getElementById('whatsapp').value,
-                instagram: document.getElementById('instagram').value,
                 edad: document.getElementById('edad').value,
                 ciudad: document.getElementById('ciudad').value,
-                gusto: document.getElementById('gusto').value,
-                disponibilidad: document.getElementById('disponibilidad').value,
-                ritmo: document.getElementById('ritmo').value,
-                metas: document.getElementById('metas').value
+                tiempo: document.getElementById('disponibilidad').value,
+                motivacion: document.getElementById('metas').value
             };
 
             try {
+                // Envío de datos
                 await fetch(CONFIG.webhook, { method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify(payload) });
-                window.location.href = CONFIG.calendly;
+                
+                // FORZAR APERTURA DE WHATSAPP EN VENTANA NUEVA
+                window.open(CONFIG.whatsapp, '_blank');
+
+                // TRANSICIÓN A CALENDLY EN LA MISMA PÁGINA (Sin redireccionar)
+                document.getElementById('mentorshipForm').style.display = 'none';
+                document.getElementById('tests-social-section').style.display = 'none';
+                document.getElementById('form-title').innerText = 'Test Enviado con Éxito';
+                document.getElementById('form-subtitle').innerText = 'Se ha abierto tu WhatsApp en otra pestaña. Agenda aquí tu entrevista:';
+                document.getElementById('calendly-container').style.display = 'block';
             } catch (err) { 
-                window.location.href = CONFIG.calendly; 
+                window.open(CONFIG.whatsapp, '_blank');
+                document.getElementById('mentorshipForm').style.display = 'none';
+                document.getElementById('calendly-container').style.display = 'block';
             }
         });
 
