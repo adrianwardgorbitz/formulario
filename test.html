@@ -8,7 +8,9 @@
     <meta name="description" content="Aplica para agendar una sesión estratégica con Adrian Ward.">
     <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/3258/3258502.png" type="image/png">
     
+    <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
+    
     <style>
         :root { --fuxion-blue: #0033A0; --accent: #00d4ff; --bg: #05070a; --border: rgba(255,255,255,0.15); }
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -34,20 +36,29 @@
             width: 100%; background: #161b22 !important; border: 1px solid var(--border); padding: 16px; border-radius: 12px; color: #fff !important; margin-bottom: 15px; font-size: 14px; outline: none; font-family: inherit;
         }
 
-        .btn-submit { width: 100%; padding: 20px; background: linear-gradient(90deg, var(--fuxion-blue), #007AFF); border: none; border-radius: 15px; color: #fff; font-weight: 700; font-size: 16px; cursor: pointer; text-transform: uppercase; margin-bottom: 25px; }
+        /* CALENDLY DENTRO DEL FORM */
+        .calendly-box { 
+            background: rgba(255,255,255,0.02); 
+            border: 1px solid var(--accent); 
+            border-radius: 20px; 
+            margin-bottom: 25px; 
+            overflow: hidden;
+            padding: 10px;
+        }
+        .calendly-label { text-align: center; font-size: 12px; color: var(--accent); font-weight: 700; margin-bottom: 10px; text-transform: uppercase; display: block; }
+
+        .btn-submit { width: 100%; padding: 20px; background: linear-gradient(90deg, var(--fuxion-blue), #007AFF); border: none; border-radius: 15px; color: #fff; font-weight: 700; font-size: 16px; cursor: pointer; text-transform: uppercase; transition: 0.3s; margin-bottom: 20px; }
         
-        /* LOS DOS BOTONES NUEVOS */
-        .secondary-btns-container { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 10px; }
-        .btn-link { 
-            padding: 15px; background: transparent; border: 2px solid var(--accent); border-radius: 15px; color: var(--accent); font-weight: 700; font-size: 13px; text-decoration: none; text-align: center; text-transform: uppercase; transition: 0.3s;
-        }
-        .btn-link:hover { background: rgba(0, 212, 255, 0.1); }
+        .github-btns { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 20px; }
+        .btn-github { padding: 12px; background: transparent; border: 1px solid var(--border); border-radius: 12px; color: #fff; text-decoration: none; text-align: center; font-size: 12px; font-weight: 600; text-transform: uppercase; }
 
-        #calendly-container { display: none; margin-top: 20px; }
+        .reviews-dropdown { margin-top: 10px; border-top: 1px solid var(--border); padding-top: 20px; }
+        details { background: rgba(255,255,255,0.03); border-radius: 20px; padding: 5px; cursor: pointer; }
+        summary { font-weight: 700; color: var(--accent); text-align: center; padding: 15px; list-style: none; font-size: 13px; }
+        .reviews-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 10px; max-height: 500px; overflow-y: auto; padding: 10px; }
+        .review-item { background: rgba(255,255,255,0.04); padding: 12px; border-radius: 15px; border: 1px solid var(--border); }
 
-        @media (max-width: 600px) { 
-            .stats-grid, .input-grid, .secondary-btns-container { grid-template-columns: 1fr; } 
-        }
+        @media (max-width: 600px) { .stats-grid, .input-grid, .reviews-grid, .github-btns { grid-template-columns: 1fr; } }
     </style>
 </head>
 <body>
@@ -66,8 +77,8 @@
         </div>
 
         <section class="bio-section">
-            <h3 id="form-title">Paso 1: Completa tu Perfil</h3>
-            <p id="form-subtitle" style="font-size: 14px; opacity: 0.8;">Inicia tu proceso de selección aquí.</p>
+            <h3>Evaluación de Liderazgo</h3>
+            <p style="font-size: 14px; opacity: 0.8;">Completa los datos y agenda tu cita para finalizar.</p>
         </section>
 
         <section class="glass-card">
@@ -99,21 +110,33 @@
                     </select>
                 </div>
                 <textarea id="metas" placeholder="Cuéntame tus metas..." rows="3" required></textarea>
+
+                <div class="calendly-box">
+                    <span class="calendly-label">📅 Paso Final: Agenda tu entrevista aquí</span>
+                    <div class="calendly-inline-widget" data-url="https://calendly.com/adrianward_/15min" style="min-width:320px;height:500px;"></div>
+                </div>
                 
-                <button type="submit" class="btn-submit" id="submitBtn">ENVIAR APLICACIÓN</button>
+                <button type="submit" class="btn-submit" id="submitBtn">FINALIZAR Y AGENDAR</button>
             </form>
 
-            <div class="secondary-btns-container" id="extra-actions">
-                <a href="https://adrianwardgorbitz.github.io/liderazgo" target="_blank" class="btn-link">Test de Liderazgo</a>
-                <a href="https://adrianwardgorbitz.github.io/cuestionario" target="_blank" class="btn-link">Cuestionario</a>
+            <div class="github-btns">
+                <a href="https://adrianwardgorbitz.github.io/liderazgo" target="_blank" class="btn-github">Test de Liderazgo</a>
+                <a href="https://adrianwardgorbitz.github.io/cuestionario" target="_blank" class="btn-github">Cuestionario</a>
             </div>
 
-            <div id="calendly-container">
-                <div class="calendly-inline-widget" data-url="https://calendly.com/adrianward_/15min" style="min-width:320px;height:700px;"></div>
-                <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
+            <div class="reviews-dropdown" id="reviews-box">
+                <details>
+                    <summary>⭐ VER RESULTADOS DE LA COMUNIDAD</summary>
+                    <div id="reviewsGrid" class="reviews-grid">
+                        <p id="loading" style="text-align: center; font-size: 11px; padding: 20px;">Cargando...</p>
+                    </div>
+                </details>
             </div>
         </section>
     </div>
+
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
 
     <script>
         const CONFIG = { 
@@ -121,10 +144,40 @@
             whatsapp_link: "https://chat.whatsapp.com/KtBu7mszVBOE2oMdf0bFl1"
         };
 
+        const firebaseConfig = {
+            apiKey: "AIzaSyBZ1iquQo-rcaI25-eStS8ZhwYI-lugCLk",
+            authDomain: "degustaciones.firebaseapp.com",
+            projectId: "degustaciones",
+            storageBucket: "degustaciones.firebasestorage.app",
+            messagingSenderId: "80590754347",
+            appId: "1:80590754347:web:982cd91a00ddccc7f1106e"
+        };
+        firebase.initializeApp(firebaseConfig);
+        const db = firebase.firestore();
+
+        // Carga de reseñas
+        async function loadReviews() {
+            const grid = document.getElementById('reviewsGrid');
+            try {
+                const snap = await db.collection('reviews').orderBy('timestamp', 'desc').limit(20).get();
+                document.getElementById('loading').style.display = 'none';
+                snap.forEach(doc => {
+                    const d = doc.data();
+                    const photos = d.photoUrls || (d.photoUrl ? [d.photoUrl] : []);
+                    if(photos.length > 0) {
+                        const div = document.createElement('div');
+                        div.className = 'review-item';
+                        div.innerHTML = `<img src="${photos[0]}" style="width:100%; border-radius:10px;"><p style="font-size:10px; margin-top:5px;">${d.name || 'Socio'}</p>`;
+                        grid.appendChild(div);
+                    }
+                });
+            } catch (e) { console.error(e); }
+        }
+
         document.getElementById('mentorshipForm').addEventListener('submit', async (e) => {
             e.preventDefault();
             const btn = document.getElementById('submitBtn');
-            btn.disabled = true; btn.innerText = 'ENVIANDO...';
+            btn.disabled = true; btn.innerText = 'PROCESANDO...';
             
             const payload = {
                 nombre: document.getElementById('nombre').value,
@@ -140,20 +193,22 @@
             };
 
             try {
+                // Envío a Make
                 await fetch(CONFIG.webhook, { method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify(payload) });
+                
+                // Abre WhatsApp en pestaña nueva
                 window.open(CONFIG.whatsapp_link, '_blank');
-
-                // Ocultar todo y mostrar Calendly
-                document.getElementById('mentorshipForm').style.display = 'none';
-                document.getElementById('extra-actions').style.display = 'none';
-                document.getElementById('form-title').innerText = '¡Aplicación Enviada!';
-                document.getElementById('form-subtitle').innerText = 'Agenda tu sesión de 15 min aquí abajo.';
-                document.getElementById('calendly-container').style.display = 'block';
+                
+                // Mensaje de éxito final
+                btn.innerText = '¡DATOS ENVIADOS Y CITA AGENDADA!';
+                alert("¡Felicidades! Tus datos se han enviado y se ha registrado tu interés en la agenda. Revisa tu WhatsApp.");
                 
             } catch (err) { 
                 window.open(CONFIG.whatsapp_link, '_blank');
             }
         });
+
+        window.onload = loadReviews;
     </script>
 </body>
 </html>
