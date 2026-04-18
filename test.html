@@ -156,35 +156,44 @@
         }
 
         async function loadReviews() {
-            const grid = document.getElementById('reviewsGrid');
-            grid.innerHTML = '<p style="font-size:12px; opacity:0.5; grid-column:1/-1; text-align:center;">Cargando experiencia de socios...</p>';
+    const grid = document.getElementById('reviewsGrid');
+    grid.innerHTML = '<p style="font-size:12px; opacity:0.5; grid-column:1/-1; text-align:center;">Cargando experiencia de socios...</p>';
+    
+    try {
+        const snap = await db.collection('reviews').orderBy('timestamp', 'desc').limit(6).get();
+        grid.innerHTML = '';
+        
+        snap.forEach(doc => {
+            const d = doc.data();
             
-            try {
-                const snap = await db.collection('reviews').orderBy('timestamp', 'desc').limit(6).get();
-                grid.innerHTML = '';
-                snap.forEach(doc => {
-                    const d = doc.data();
-                    const avatar = d.photoUrls && d.photoUrls.length > 0 
-                        ? `<img src="${d.photoUrls[0]}" class="rev-avatar">` 
-                        : `<div class="rev-avatar">${d.name.charAt(0)}</div>`;
-                    
-                    grid.innerHTML += `
-                        <div class="rev-card">
-                            <div class="rev-header">
-                                ${avatar}
-                                <div class="rev-info">
-                                    <h4>${d.name}</h4>
-                                    <div class="rev-stars">${'⭐'.repeat(d.rating || 5)}</div>
-                                </div>
-                            </div>
-                            <p class="rev-text">"${d.comment}"</p>
-                        </div>
-                    `;
-                });
-            } catch (e) {
-                grid.innerHTML = '<p>Error al cargar reseñas.</p>';
+            // Lógica corregida para detectar fotos
+            let fotoHTML = '';
+            if (d.photoUrls && Array.isArray(d.photoUrls) && d.photoUrls.length > 0) {
+                // Si hay fotos, usamos la primera
+                fotoHTML = `<img src="${d.photoUrls[0]}" class="rev-avatar" onerror="this.src='https://ui-avatars.com/api/?name=${d.name}&background=0033A0&color=fff'">`;
+            } else {
+                // Si no hay, ponemos la inicial
+                fotoHTML = `<div class="rev-avatar">${d.name.charAt(0)}</div>`;
             }
-        }
+            
+            grid.innerHTML += `
+                <div class="rev-card">
+                    <div class="rev-header">
+                        ${fotoHTML}
+                        <div class="rev-info">
+                            <h4>${d.name}</h4>
+                            <div class="rev-stars">${'⭐'.repeat(d.rating || 5)}</div>
+                        </div>
+                    </div>
+                    <p class="rev-text">"${d.comment}"</p>
+                </div>
+            `;
+        });
+    } catch (e) {
+        console.error("Error al cargar fotos:", e);
+        grid.innerHTML = '<p>Error al cargar reseñas.</p>';
+    }
+}
 
         // LÓGICA DEL FORMULARIO
         document.getElementById('mentorshipForm').addEventListener('submit', function(e) {
