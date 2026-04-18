@@ -31,68 +31,24 @@
         .btn-submit { width: 100%; padding: 20px; background: linear-gradient(90deg, var(--fuxion-blue), #007AFF); border: none; border-radius: 15px; color: #fff; font-weight: 700; font-size: 16px; cursor: pointer; text-transform: uppercase; transition: 0.3s; margin-bottom: 20px; }
         .btn-submit:disabled { opacity: 0.5; }
 
-        /* --- ESTILOS RESEÑAS DROPDOWN --- */
-        <style>
-    /* ... (tus otros estilos anteriores) ... */
-
-    .btn-submit:disabled { opacity: 0.5; }
-
-    /* === PEGA AQUÍ LOS NUEVOS ESTILOS DE FOTO === */
-
-    /* Foto en tamaño original adaptada al ancho de la tarjeta */
-    .rev-photo-full {
-        width: 100%;
-        height: auto;
-        border-radius: 12px;
-        margin-bottom: 12px;
-        border: 1px solid var(--border);
-        display: block;
-    }
-
-    /* El avatar pequeño solo se usará si NO hay foto */
-    .rev-avatar { 
-        width: 40px; 
-        height: 40px; 
-        border-radius: 50%; 
-        background: var(--fuxion-blue); 
-        display: flex; 
-        align-items: center; 
-        justify-content: center; 
-        font-weight: bold; 
-        border: 1.5px solid var(--accent);
-        margin-bottom: 10px;
-    }
-
-    /* ... (continúa con el resto de tus estilos como .reviews-toggle, etc) ... */
-</style>
-        .reviews-toggle { width: 100%; background: transparent; border: 1px solid var(--border); color: var(--accent); padding: 12px; border-radius: 12px; cursor: pointer; font-weight: 600; font-size: 13px; margin-bottom: 20px; transition: 0.3s; }
-        .reviews-toggle:hover { background: rgba(0, 212, 255, 0.05); }
-
+        /* RESEÑAS */
+        .reviews-toggle { width: 100%; background: transparent; border: 1px solid var(--border); color: var(--accent); padding: 12px; border-radius: 12px; cursor: pointer; font-weight: 600; font-size: 13px; margin-bottom: 20px; transition: 0.3s; font-family: inherit; }
+        .reviews-toggle:hover { background: rgba(0, 212, 255, 0.05); border-color: var(--accent); }
         .reviews-wrapper { max-height: 0; overflow: hidden; transition: max-height 0.5s ease-in-out; }
-        .reviews-wrapper.active { max-height: 1200px; overflow-y: auto; }
-
+        .reviews-wrapper.active { max-height: 1500px; overflow-y: auto; }
         .reviews-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; padding-bottom: 20px; }
         .rev-card { background: rgba(255,255,255,0.02); border: 1px solid var(--border); padding: 15px; border-radius: 15px; }
+        .rev-photo-full { width: 100%; height: auto; border-radius: 12px; margin-bottom: 12px; border: 1px solid var(--border); display: block; object-fit: cover; }
         .rev-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
-       .rev-avatar { 
-    width: 38px; 
-    height: 38px; 
-    border-radius: 50%; 
-    object-fit: cover; /* Esto evita que la foto se estire */
-    background: var(--fuxion-blue); 
-    display: flex; 
-    align-items: center; 
-    justify-content: center; 
-    font-weight: bold; 
-    font-size: 14px; 
-    border: 1.5px solid var(--accent);
-    flex-shrink: 0; /* Evita que la foto se aplaste si el texto es largo */
-} .rev-info h4 { font-size: 13px; margin: 0; color: #fff; }
+        .rev-avatar { width: 40px; height: 40px; border-radius: 50%; background: var(--fuxion-blue); display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 14px; border: 1.5px solid var(--accent); flex-shrink: 0; }
+        .rev-info h4 { font-size: 13px; margin: 0; color: #fff; }
         .rev-stars { color: #FFB800; font-size: 10px; }
         .rev-text { font-size: 11px; color: #bbb; font-style: italic; line-height: 1.4; }
 
+        /* BOTONES EXTRA */
         .github-btns { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 10px; }
-        .btn-github { padding: 12px; background: transparent; border: 1px solid var(--border); border-radius: 12px; color: #fff; text-decoration: none; text-align: center; font-size: 12px; font-weight: 600; text-transform: uppercase; }
+        .btn-github { padding: 12px; background: transparent; border: 1px solid var(--border); border-radius: 12px; color: #fff; text-decoration: none; text-align: center; font-size: 12px; font-weight: 600; text-transform: uppercase; transition: 0.3s; }
+        .btn-github:hover { background: rgba(255, 255, 255, 0.05); border-color: #fff; }
 
         @media (max-width: 600px) { .stats-grid, .input-grid, .github-btns, .reviews-grid { grid-template-columns: 1fr; } }
     </style>
@@ -153,8 +109,7 @@
             <button class="reviews-toggle" onclick="toggleReviews()">✨ VER TESTIMONIOS DE LA COMUNIDAD <span id="arrow">▼</span></button>
             
             <div id="reviewsWrapper" class="reviews-wrapper">
-                <div id="reviewsGrid" class="reviews-grid">
-                    </div>
+                <div id="reviewsGrid" class="reviews-grid"></div>
             </div>
 
             <div class="github-btns">
@@ -168,7 +123,6 @@
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
 
     <script>
-        // CONFIGURACIÓN FIREBASE
         const firebaseConfig = {
             apiKey: "AIzaSyBZ1iquQo-rcaI25-eStS8ZhwYI-lugCLk",
             authDomain: "degustaciones.firebaseapp.com",
@@ -185,13 +139,11 @@
             whatsapp_link: "https://chat.whatsapp.com/KtBu7mszVBOE2oMdf0bFl1"
         };
 
-        // LÓGICA DROPDOWN Y CARGA DE RESEÑAS
         let reviewsLoaded = false;
         function toggleReviews() {
             const wrapper = document.getElementById('reviewsWrapper');
             const arrow = document.getElementById('arrow');
             wrapper.classList.toggle('active');
-            arrow.style.display = 'inline-block';
             arrow.style.transform = wrapper.classList.contains('active') ? 'rotate(180deg)' : 'rotate(0deg)';
             
             if (!reviewsLoaded) {
@@ -201,55 +153,45 @@
         }
 
         async function loadReviews() {
-    const grid = document.getElementById('reviewsGrid');
-    grid.innerHTML = '<p style="font-size:12px; opacity:0.5; grid-column:1/-1; text-align:center;">Cargando experiencia de socios...</p>';
-    
-    try {
-        const snap = await db.collection('reviews').orderBy('timestamp', 'desc').limit(6).get();
-        grid.innerHTML = '';
-        
-        snap.forEach(doc => {
-            const d = doc.data();
-            let contentHTML = '';
-
-            // Si hay fotos, mostramos la primera en tamaño grande adaptado
-            if (d.photoUrls && Array.isArray(d.photoUrls) && d.photoUrls.length > 0) {
-                contentHTML = `
-                    <img src="${d.photoUrls[0]}" class="rev-photo-full">
-                    <div class="rev-header">
-                        <div class="rev-info">
-                            <h4>${d.name}</h4>
-                            <div class="rev-stars">${'⭐'.repeat(d.rating || 5)}</div>
-                        </div>
-                    </div>`;
-            } else {
-                // Si no hay foto, usamos el avatar con inicial
-                contentHTML = `
-                    <div class="rev-header">
-                        <div class="rev-avatar">${d.name.charAt(0)}</div>
-                        <div class="rev-info">
-                            <h4>${d.name}</h4>
-                            <div class="rev-stars">${'⭐'.repeat(d.rating || 5)}</div>
-                        </div>
-                    </div>`;
-            }
+            const grid = document.getElementById('reviewsGrid');
+            grid.innerHTML = '<p style="font-size:12px; opacity:0.5; grid-column:1/-1; text-align:center;">Cargando experiencia de socios...</p>';
             
-            grid.innerHTML += `
-                <div class="rev-card">
-                    ${contentHTML}
-                    <p class="rev-text">"${d.comment}"</p>
-                </div>
-            `;
-        });
-    } catch (e) {
-        console.error("Error:", e);
-        grid.innerHTML = '<p>Error al cargar reseñas.</p>';
-    }
-}
-    }
-}
+            try {
+                const snap = await db.collection('reviews').orderBy('timestamp', 'desc').limit(6).get();
+                grid.innerHTML = '';
+                
+                snap.forEach(doc => {
+                    const d = doc.data();
+                    let contentHTML = '';
 
-        // LÓGICA DEL FORMULARIO
+                    if (d.photoUrls && Array.isArray(d.photoUrls) && d.photoUrls.length > 0) {
+                        contentHTML = `
+                            <img src="${d.photoUrls[0]}" class="rev-photo-full">
+                            <div class="rev-header">
+                                <div class="rev-info">
+                                    <h4>${d.name}</h4>
+                                    <div class="rev-stars">${'⭐'.repeat(d.rating || 5)}</div>
+                                </div>
+                            </div>`;
+                    } else {
+                        contentHTML = `
+                            <div class="rev-header">
+                                <div class="rev-avatar">${d.name.charAt(0)}</div>
+                                <div class="rev-info">
+                                    <h4>${d.name}</h4>
+                                    <div class="rev-stars">${'⭐'.repeat(d.rating || 5)}</div>
+                                </div>
+                            </div>`;
+                    }
+                    
+                    grid.innerHTML += `<div class="rev-card">${contentHTML}<p class="rev-text">"${d.comment}"</p></div>`;
+                });
+            } catch (e) {
+                console.error("Error:", e);
+                grid.innerHTML = '<p>Error al cargar reseñas.</p>';
+            }
+        }
+
         document.getElementById('mentorshipForm').addEventListener('submit', function(e) {
             e.preventDefault();
             const btn = document.getElementById('submitBtn');
