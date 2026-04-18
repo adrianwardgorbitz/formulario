@@ -20,11 +20,12 @@
         :root { --fuxion-blue: #0033A0; --accent: #00d4ff; --bg: #05070a; --border: rgba(255,255,255,0.15); }
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: 'Poppins', sans-serif; background-color: var(--bg); color: #fff; line-height: 1.6; color-scheme: dark; }
-     .container { 
+    .container { 
     width: 100%; 
-    max-width: 1000px; /* Un poco más ancho para PC */
+    max-width: 900px; /* Un punto medio perfecto para que One.com no se asuste */
     margin: 0 auto; 
-    padding: 20px; 
+    padding: 20px;
+    box-sizing: border-box;
 }
         .hero h1 { text-align: center; font-size: clamp(28px, 7vw, 45px); font-weight: 800; margin-bottom: 30px; letter-spacing: -1px; }
         
@@ -33,18 +34,16 @@
         .stat-number { display: block; font-size: 22px; font-weight: 800; color: #fff; }
         .stat-label { font-size: 10px; color: var(--accent); text-transform: uppercase; font-weight: 600; }
         
-      .video-container { 
+     .video-container { 
     position: relative; 
     padding-bottom: 56.25%; 
     height: 0; 
     border-radius: 20px; 
     overflow: hidden; 
-    margin-bottom: 30px; 
+    margin: 0 auto 30px auto; 
     border: 1px solid var(--border);
-    
-    /* AÑADE ESTAS DOS LÍNEAS */
-    max-width: 750px; /* Esto evita que en PC se coma toda la pantalla */
-    margin: 0 auto 30px auto; /* Lo centra y le da espacio abajo */
+    width: 100%;
+    max-width: 800px; /* Esto lo mantiene bajo control en PC */
 }
         .video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
         
@@ -120,8 +119,8 @@
         </div>
 
         <div class="video-container">
-            <iframe src="https://www.youtube.com/embed/U33TC3cmd5E" allowfullscreen></iframe>
-        </div>
+    <iframe src="https://www.youtube.com/embed/U33TC3cmd5E" allowfullscreen></iframe>
+</div>
         <div style="padding: 0 20px; margin: 20px 0 30px 0;">
     <a href="https://beacons.ai/adrianward/adrianysiquierosercliente" target="_blank" 
        style="display: block; width: 100%; padding: 18px; background: transparent; border: 2px solid #00d4ff; color: #00d4ff; border-radius: 15px; text-decoration: none; font-weight: 700; text-align: center; text-transform: uppercase; letter-spacing: 1px;">
