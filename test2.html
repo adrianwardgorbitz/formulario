@@ -93,14 +93,10 @@
 
         <div style="text-align: center; margin-bottom: 30px;">
             <h2 style="font-size: clamp(22px, 6vw, 32px); font-weight: 800; line-height: 1.2;">
-                Haz Negocio en la industria de la Hidratación<br>
-                
+                Haz Negocio en la industria de la <br>
+                <span style="color: var(--accent);">Hidratación de 6-7 Cifras</span>
             </h2>
         </div>
-
-        <section class="bio-section">
-            <h3>LLENA LOS SIGUIENTES DATOS</h3>
-        </section>
 
         <section class="glass-card">
             <form id="mentorshipForm">
@@ -109,8 +105,27 @@
                     <input type="email" id="email" placeholder="Email" required>
                 </div>
                 <div class="input-grid">
-                    <input type="tel" id="whatsapp" placeholder="WhatsApp" required>
-                    <input type="text" id="instagram" placeholder="Instagram">
+                    <div style="display: flex; gap: 5px;">
+                        <select id="prefijo" style="width: 100px; flex-shrink: 0; padding: 14px 5px; font-size: 13px;" required>
+                            <option value="" disabled selected>🌐 País</option>
+                            <option value="+34">🇪🇸 +34</option>
+                            <option value="+1">🇺🇸 +1</option>
+                            <option value="+52">🇲🇽 +52</option>
+                            <option value="+57">🇨🇴 +57</option>
+                            <option value="+51">🇵🇪 +51</option>
+                            <option value="+54">🇦🇷 +54</option>
+                            <option value="+56">🇨🇱 +56</option>
+                            <option value="+593">🇪🇨 +593</option>
+                            <option value="+507">🇵🇦 +507</option>
+                            <option value="+591">🇧🇴 +591</option>
+                            <option value="+58">🇻🇪 +58</option>
+                            <option value="+506">🇨🇷 +506</option>
+                            <option value="+502">🇬🇹 +502</option>
+                            <option value="+39">🇮🇹 +39</option>
+                        </select>
+                        <input type="tel" id="whatsapp" placeholder="Teléfono" required style="flex-grow: 1;">
+                    </div>
+                    <input type="text" id="instagram" placeholder="Instagram (Usuario)">
                 </div>
                 <div class="input-grid">
                     <input type="number" id="edad" placeholder="Edad" required>
@@ -205,10 +220,14 @@
             e.preventDefault();
             const btn = document.getElementById('submitBtn');
             btn.disabled = true; btn.innerText = 'PROCESANDO...';
+            
+            // FUSIONAMOS PREFIJO + NÚMERO
+            const fullPhone = document.getElementById('prefijo').value + " " + document.getElementById('whatsapp').value;
+
             const payload = {
                 nombre: document.getElementById('nombre').value,
                 email: document.getElementById('email').value,
-                whatsapp: document.getElementById('whatsapp').value,
+                whatsapp: fullPhone,
                 instagram: document.getElementById('instagram').value,
                 edad: document.getElementById('edad').value,
                 ciudad: document.getElementById('ciudad').value,
@@ -217,12 +236,13 @@
                 ritmo: document.getElementById('ritmo').value,
                 sobre_ellos: document.getElementById('sobre_ellos').value
             };
+            
             fetch("https://hook.eu1.make.com/cmma9n6v7egfcmtdjjx85kuc72p83b3k", { 
                 method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) 
             }).finally(() => {
                 setTimeout(() => {
                     window.open("https://chat.whatsapp.com/KtBu7mszVBOE2oMdf0bFl1", '_blank');
-                    btn.innerText = '¡EXITO!';
+                    btn.innerText = '¡ÉXITO!';
                 }, 600);
             });
         });
