@@ -210,33 +210,42 @@
         
         snap.forEach(doc => {
             const d = doc.data();
-            
-            // Lógica corregida para detectar fotos
-            let fotoHTML = '';
+            let contentHTML = '';
+
+            // Si hay fotos, mostramos la primera en tamaño grande adaptado
             if (d.photoUrls && Array.isArray(d.photoUrls) && d.photoUrls.length > 0) {
-                // Si hay fotos, usamos la primera
-                fotoHTML = `<img src="${d.photoUrls[0]}" class="rev-avatar" onerror="this.src='https://ui-avatars.com/api/?name=${d.name}&background=0033A0&color=fff'">`;
-            } else {
-                // Si no hay, ponemos la inicial
-                fotoHTML = `<div class="rev-avatar">${d.name.charAt(0)}</div>`;
-            }
-            
-            grid.innerHTML += `
-                <div class="rev-card">
+                contentHTML = `
+                    <img src="${d.photoUrls[0]}" class="rev-photo-full">
                     <div class="rev-header">
-                        ${fotoHTML}
                         <div class="rev-info">
                             <h4>${d.name}</h4>
                             <div class="rev-stars">${'⭐'.repeat(d.rating || 5)}</div>
                         </div>
-                    </div>
+                    </div>`;
+            } else {
+                // Si no hay foto, usamos el avatar con inicial
+                contentHTML = `
+                    <div class="rev-header">
+                        <div class="rev-avatar">${d.name.charAt(0)}</div>
+                        <div class="rev-info">
+                            <h4>${d.name}</h4>
+                            <div class="rev-stars">${'⭐'.repeat(d.rating || 5)}</div>
+                        </div>
+                    </div>`;
+            }
+            
+            grid.innerHTML += `
+                <div class="rev-card">
+                    ${contentHTML}
                     <p class="rev-text">"${d.comment}"</p>
                 </div>
             `;
         });
     } catch (e) {
-        console.error("Error al cargar fotos:", e);
+        console.error("Error:", e);
         grid.innerHTML = '<p>Error al cargar reseñas.</p>';
+    }
+}
     }
 }
 
