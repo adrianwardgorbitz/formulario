@@ -4,45 +4,62 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Diamond Mentorship - Adrian Ward</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/3258/3258502.png" type="image/png">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
+    
     <style>
         :root { --fuxion-blue: #0033A0; --accent: #00d4ff; --bg: #05070a; --border: rgba(255,255,255,0.15); }
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Poppins', sans-serif; background-color: var(--bg); color: #fff; line-height: 1.6; }
+        body { font-family: 'Poppins', sans-serif; background-color: var(--bg); color: #fff; line-height: 1.6; color-scheme: dark; }
         .container { max-width: 800px; margin: 0 auto; padding: 40px 20px; }
-        .hero h1 { text-align: center; font-size: clamp(32px, 8vw, 50px); font-weight: 800; margin-bottom: 30px; }
+        .hero h1 { text-align: center; font-size: clamp(28px, 7vw, 45px); font-weight: 800; margin-bottom: 30px; letter-spacing: -1px; }
         
         .stats-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; margin-bottom: 40px; }
         .stat-card { background: rgba(255,255,255,0.03); border: 1px solid var(--border); padding: 20px; border-radius: 20px; text-align: center; }
-        .stat-number { display: block; font-size: 24px; font-weight: 800; }
+        .stat-number { display: block; font-size: 22px; font-weight: 800; color: #fff; }
         .stat-label { font-size: 10px; color: var(--accent); text-transform: uppercase; font-weight: 600; }
-
+        
         .video-container { position: relative; padding-bottom: 56.25%; height: 0; border-radius: 25px; overflow: hidden; margin-bottom: 40px; border: 1px solid var(--border); }
         .video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
-
-        .bio-section { background: linear-gradient(145deg, rgba(0,51,160,0.15), rgba(17,24,39,0.8)); border: 1px solid var(--fuxion-blue); border-radius: 30px; padding: 30px; margin-bottom: 40px; }
-        .badge { display: inline-block; padding: 5px 15px; background: var(--fuxion-blue); border-radius: 50px; font-size: 11px; font-weight: 700; margin-bottom: 10px; }
-
-        .glass-card { background: rgba(17,24,39,0.95); border: 1px solid var(--border); border-radius: 35px; padding: 30px; }
-        .offer-box { border-left: 4px solid var(--fuxion-blue); background: rgba(0,51,160,0.1); padding: 15px; border-radius: 0 15px 15px 0; margin-bottom: 25px; }
-
-        .input-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
-        input, select, textarea { width: 100%; background: rgba(255,255,255,0.05); border: 1px solid var(--border); padding: 16px; border-radius: 12px; color: #fff; margin-bottom: 15px; font-family: inherit; }
-        select option { background: #05070a; }
-
-        .btn-submit { width: 100%; padding: 20px; background: linear-gradient(90deg, var(--fuxion-blue), #007AFF); border: none; border-radius: 15px; color: #fff; font-weight: 700; font-size: 18px; cursor: pointer; text-transform: uppercase; }
         
-        @media (max-width: 600px) { .stats-grid, .input-grid { grid-template-columns: 1fr; } }
+        .bio-section { background: linear-gradient(145deg, rgba(0,51,160,0.1), rgba(17,24,39,0.8)); border: 1px solid var(--fuxion-blue); border-radius: 25px; padding: 25px; margin-bottom: 40px; text-align: center; }
+        .glass-card { background: rgba(17,24,39,0.95); border: 1px solid var(--border); border-radius: 30px; padding: 30px; }
+        
+        .input-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+        input, select, textarea { width: 100%; background: #161b22 !important; border: 1px solid var(--border); padding: 16px; border-radius: 12px; color: #fff !important; margin-bottom: 15px; font-size: 14px; outline: none; font-family: inherit; }
+        
+        .btn-submit { width: 100%; padding: 20px; background: linear-gradient(90deg, var(--fuxion-blue), #007AFF); border: none; border-radius: 15px; color: #fff; font-weight: 700; font-size: 16px; cursor: pointer; text-transform: uppercase; transition: 0.3s; margin-bottom: 20px; }
+        .btn-submit:disabled { opacity: 0.5; }
+
+        /* RESEÑAS */
+        .reviews-toggle { width: 100%; background: transparent; border: 1px solid var(--border); color: var(--accent); padding: 12px; border-radius: 12px; cursor: pointer; font-weight: 600; font-size: 13px; margin-bottom: 20px; transition: 0.3s; font-family: inherit; }
+        .reviews-toggle:hover { background: rgba(0, 212, 255, 0.05); border-color: var(--accent); }
+        .reviews-wrapper { max-height: 0; overflow: hidden; transition: max-height 0.5s ease-in-out; }
+        .reviews-wrapper.active { max-height: 1500px; overflow-y: auto; }
+        .reviews-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; padding-bottom: 20px; }
+        .rev-card { background: rgba(255,255,255,0.02); border: 1px solid var(--border); padding: 15px; border-radius: 15px; }
+        .rev-photo-full { width: 100%; height: auto; border-radius: 12px; margin-bottom: 12px; border: 1px solid var(--border); display: block; object-fit: cover; }
+        .rev-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
+        .rev-avatar { width: 40px; height: 40px; border-radius: 50%; background: var(--fuxion-blue); display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 14px; border: 1.5px solid var(--accent); flex-shrink: 0; }
+        .rev-info h4 { font-size: 13px; margin: 0; color: #fff; }
+        .rev-stars { color: #FFB800; font-size: 10px; }
+        .rev-text { font-size: 11px; color: #bbb; font-style: italic; line-height: 1.4; }
+
+        /* BOTONES EXTRA */
+        .github-btns { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 10px; }
+        .btn-github { padding: 12px; background: transparent; border: 1px solid var(--border); border-radius: 12px; color: #fff; text-decoration: none; text-align: center; font-size: 12px; font-weight: 600; text-transform: uppercase; transition: 0.3s; }
+        .btn-github:hover { background: rgba(255, 255, 255, 0.05); border-color: #fff; }
+
+        @media (max-width: 600px) { .stats-grid, .input-grid, .github-btns, .reviews-grid { grid-template-columns: 1fr; } }
     </style>
 </head>
 <body>
+
     <div class="container">
         <header class="hero"><h1>The Diamond Mentorship</h1></header>
 
         <div class="stats-grid">
-            <div class="stat-card"><span class="stat-number">$8M</span><span class="stat-label">Ventas 2025</span></div>
+            <div class="stat-card"><span class="stat-number">$8M</span><span class="stat-label">Ventas</span></div>
             <div class="stat-card"><span class="stat-number">20k+</span><span class="stat-label">Clientes</span></div>
             <div class="stat-card"><span class="stat-number">TOP</span><span class="stat-label">Hall Millonario</span></div>
         </div>
@@ -52,17 +69,11 @@
         </div>
 
         <section class="bio-section">
-            <span class="badge">Tu Mentor</span>
-            <h3>Soy Adrian Ward</h3>
-            <p>Más de 12 años en <strong>FuXion</strong>, miembro del Hall Millonario y Top Producer global.</p>
+            <h3>Evaluación de Liderazgo</h3>
+            <p style="font-size: 14px; opacity: 0.8;">Completa tus datos para unirte al equipo.</p>
         </section>
 
         <section class="glass-card">
-            <div class="offer-box">
-                <h4 style="color: var(--accent);">💎 BONO DE ESCALAMIENTO</h4>
-                <p style="font-size: 14px;">Si logras +20 clientes en tu primer mes, <strong>¡Yo te pago un Asistente Virtual por 30 días!</strong></p>
-            </div>
-            
             <form id="mentorshipForm">
                 <div class="input-grid">
                     <input type="text" id="nombre" placeholder="Nombre completo" required>
@@ -70,7 +81,7 @@
                 </div>
                 <div class="input-grid">
                     <input type="tel" id="whatsapp" placeholder="WhatsApp" required>
-                    <input type="text" id="instagram" placeholder="Instagram (Opcional)">
+                    <input type="text" id="instagram" placeholder="Instagram">
                 </div>
                 <div class="input-grid">
                     <input type="number" id="edad" placeholder="Edad" required>
@@ -80,32 +91,114 @@
                 <div class="input-grid">
                     <select id="disponibilidad" required>
                         <option value="" disabled selected>Horas semanales</option>
-                        <option value="5-10">5-10 h</option>
-                        <option value="10-20">10-20 h</option>
-                        <option value="20+">20h+ (Full Focus)</option>
+                        <option value="5-10">5-10 horas</option>
+                        <option value="10-20">10-20 horas</option>
+                        <option value="20+">Full Focus (20h+)</option>
                     </select>
                     <select id="ritmo" required>
-                        <option value="" disabled selected>Nivel de Compromiso</option>
+                        <option value="" disabled selected>Compromiso</option>
                         <option value="Rápido">Velocidad Diamante 🚀</option>
                         <option value="Moderado">Construcción Sólida ⚡</option>
                     </select>
                 </div>
-                <textarea id="metas" placeholder="Cuéntame de ti (A qué te dedicas, tus metas, etc.)" rows="3" required></textarea>
-                <button type="submit" class="btn-submit" id="submitBtn">Enviar Aplicación</button>
+                <textarea id="sobre_ellos" placeholder="Cuéntame tus metas..." rows="3" required></textarea>
+
+                <button type="submit" class="btn-submit" id="submitBtn">FINALIZAR Y UNIRME</button>
             </form>
+
+            <button class="reviews-toggle" onclick="toggleReviews()">✨ VER TESTIMONIOS DE LA COMUNIDAD <span id="arrow">▼</span></button>
+            
+            <div id="reviewsWrapper" class="reviews-wrapper">
+                <div id="reviewsGrid" class="reviews-grid"></div>
+            </div>
+
+            <div class="github-btns">
+                <a href="https://adrianwardgorbitz.github.io/liderazgo" target="_blank" class="btn-github">Test de Liderazgo</a>
+                <a href="https://adrianwardgorbitz.github.io/cuestionario" target="_blank" class="btn-github">Test Estilo de Vida</a>
+            </div>
         </section>
     </div>
 
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+
     <script>
-        const MAKE_WEBHOOK_URL = 'https://hook.eu1.make.com/cmma9n6v7egfcmtdjjx85kuc72p83b3k';
-        
+        const firebaseConfig = {
+            apiKey: "AIzaSyBZ1iquQo-rcaI25-eStS8ZhwYI-lugCLk",
+            authDomain: "degustaciones.firebaseapp.com",
+            projectId: "degustaciones",
+            storageBucket: "degustaciones.firebasestorage.app",
+            messagingSenderId: "80590754347",
+            appId: "1:80590754347:web:982cd91a00ddccc7f1106e"
+        };
+        firebase.initializeApp(firebaseConfig);
+        const db = firebase.firestore();
+
+        const CONFIG = { 
+            webhook: "https://hook.eu1.make.com/cmma9n6v7egfcmtdjjx85kuc72p83b3k",
+            whatsapp_link: "https://chat.whatsapp.com/KtBu7mszVBOE2oMdf0bFl1"
+        };
+
+        let reviewsLoaded = false;
+        function toggleReviews() {
+            const wrapper = document.getElementById('reviewsWrapper');
+            const arrow = document.getElementById('arrow');
+            wrapper.classList.toggle('active');
+            arrow.style.transform = wrapper.classList.contains('active') ? 'rotate(180deg)' : 'rotate(0deg)';
+            
+            if (!reviewsLoaded) {
+                loadReviews();
+                reviewsLoaded = true;
+            }
+        }
+
+        async function loadReviews() {
+            const grid = document.getElementById('reviewsGrid');
+            grid.innerHTML = '<p style="font-size:12px; opacity:0.5; grid-column:1/-1; text-align:center;">Cargando experiencia de socios...</p>';
+            
+            try {
+                const snap = await db.collection('reviews').orderBy('timestamp', 'desc').limit(6).get();
+                grid.innerHTML = '';
+                
+                snap.forEach(doc => {
+                    const d = doc.data();
+                    let contentHTML = '';
+
+                    if (d.photoUrls && Array.isArray(d.photoUrls) && d.photoUrls.length > 0) {
+                        contentHTML = `
+                            <img src="${d.photoUrls[0]}" class="rev-photo-full">
+                            <div class="rev-header">
+                                <div class="rev-info">
+                                    <h4>${d.name}</h4>
+                                    <div class="rev-stars">${'⭐'.repeat(d.rating || 5)}</div>
+                                </div>
+                            </div>`;
+                    } else {
+                        contentHTML = `
+                            <div class="rev-header">
+                                <div class="rev-avatar">${d.name.charAt(0)}</div>
+                                <div class="rev-info">
+                                    <h4>${d.name}</h4>
+                                    <div class="rev-stars">${'⭐'.repeat(d.rating || 5)}</div>
+                                </div>
+                            </div>`;
+                    }
+                    
+                    grid.innerHTML += `<div class="rev-card">${contentHTML}<p class="rev-text">"${d.comment}"</p></div>`;
+                });
+            } catch (e) {
+                console.error("Error:", e);
+                grid.innerHTML = '<p>Error al cargar reseñas.</p>';
+            }
+        }
+
         document.getElementById('mentorshipForm').addEventListener('submit', function(e) {
             e.preventDefault();
             const btn = document.getElementById('submitBtn');
             btn.disabled = true; 
-            btn.innerHTML = 'Enviando...';
-
-            const formData = {
+            btn.innerText = 'PROCESANDO...';
+            
+            const payload = {
                 nombre: document.getElementById('nombre').value,
                 email: document.getElementById('email').value,
                 whatsapp: document.getElementById('whatsapp').value,
@@ -115,21 +208,19 @@
                 gusto: document.getElementById('gusto').value,
                 disponibilidad: document.getElementById('disponibilidad').value,
                 ritmo: document.getElementById('ritmo').value,
-                sobre_ellos: document.getElementById('metas').value // He cambiado 'experiencia' por 'sobre_ellos' para que coincida con tu Make
+                sobre_ellos: document.getElementById('sobre_ellos').value
             };
 
-            fetch(MAKE_WEBHOOK_URL, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(formData)
-            })
-            .then(() => {
-                window.location.href = 'https://chat.whatsapp.com/KtBu7mszVBOE2oMdf0bFl1';
-            })
-            .catch(() => {
-                // Redirigimos igual para que el usuario no se quede bloqueado si hay un delay
-                window.location.href = 'https://chat.whatsapp.com/KtBu7mszVBOE2oMdf0bFl1';
-            });
+            fetch(CONFIG.webhook, { 
+            method: 'POST', 
+            headers: { 'Content-Type': 'application/json' }, 
+            body: JSON.stringify(payload) 
+        })
+            setTimeout(() => {
+                window.open(CONFIG.whatsapp_link, '_blank');
+                btn.innerText = '¡EXITO!';
+                alert("¡Perfil enviado! Únete al grupo de WhatsApp en la pestaña abierta.");
+            }, 600);
         });
     </script>
 </body>
