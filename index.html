@@ -1,65 +1,79 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<style>
-    html, body {
-        overflow-x: hidden; /* Evita que la página se mueva hacia los lados */
-        width: 100%;
-        margin: 0;
-        padding: 0;
-    }
-</style>
+    <script>
+        if (window.top !== window.self) {
+            window.top.location.replace(window.self.location.href);
+        }
+    </script>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>The Diamond Mentorship - Adrian Ward</title>
+    
     <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/3258/3258502.png" type="image/png">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
     
     <style>
         :root { --fuxion-blue: #0033A0; --accent: #00d4ff; --bg: #05070a; --border: rgba(255,255,255,0.15); }
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Poppins', sans-serif; background-color: var(--bg); color: #fff; line-height: 1.6; color-scheme: dark; }
-        .container { max-width: 800px; margin: 0 auto; padding: 40px 20px; }
-        .hero h1 { text-align: center; font-size: clamp(28px, 7vw, 45px); font-weight: 800; margin-bottom: 30px; letter-spacing: -1px; }
         
-        .stats-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; margin-bottom: 40px; }
-        .stat-card { background: rgba(255,255,255,0.03); border: 1px solid var(--border); padding: 20px; border-radius: 20px; text-align: center; }
-        .stat-number { display: block; font-size: 22px; font-weight: 800; color: #fff; }
-        .stat-label { font-size: 10px; color: var(--accent); text-transform: uppercase; font-weight: 600; }
+        html, body { 
+            overflow-x: hidden; 
+            width: 100%; 
+            margin: 0; 
+            padding: 0; 
+            background-color: var(--bg); 
+            color: #fff; 
+            font-family: 'Poppins', sans-serif; 
+            line-height: 1.6; 
+            color-scheme: dark; 
+        }
+
+        .container { max-width: 800px; margin: 0 auto; padding: 20px; }
+        .hero h1 { text-align: center; font-size: clamp(24px, 7vw, 40px); font-weight: 800; margin: 20px 0; letter-spacing: -1px; }
         
-        .video-container { position: relative; padding-bottom: 56.25%; height: 0; border-radius: 25px; overflow: hidden; margin-bottom: 40px; border: 1px solid var(--border); }
+        .stats-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 30px; }
+        .stat-card { background: rgba(255,255,255,0.03); border: 1px solid var(--border); padding: 15px; border-radius: 15px; text-align: center; }
+        .stat-number { display: block; font-size: clamp(16px, 4vw, 22px); font-weight: 800; color: #fff; }
+        .stat-label { font-size: 9px; color: var(--accent); text-transform: uppercase; font-weight: 600; }
+        
+        .video-container { position: relative; padding-bottom: 56.25%; height: 0; border-radius: 20px; overflow: hidden; margin-bottom: 30px; border: 1px solid var(--border); }
         .video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
         
-        .bio-section { background: linear-gradient(145deg, rgba(0,51,160,0.1), rgba(17,24,39,0.8)); border: 1px solid var(--fuxion-blue); border-radius: 25px; padding: 25px; margin-bottom: 40px; text-align: center; }
-        .glass-card { background: rgba(17,24,39,0.95); border: 1px solid var(--border); border-radius: 30px; padding: 30px; }
+        /* BOTÓN CATÁLOGO */
+        .catalog-box { margin-bottom: 30px; }
+        .btn-catalog { 
+            display: block; width: 100%; padding: 18px; background: transparent; 
+            border: 2px solid var(--accent); color: var(--accent); border-radius: 15px; 
+            text-decoration: none; font-weight: 700; text-align: center; 
+            text-transform: uppercase; letter-spacing: 1px; transition: 0.3s;
+            font-size: 14px;
+        }
+        .btn-catalog:hover { background: rgba(0, 212, 255, 0.1); }
+
+        .bio-section { background: linear-gradient(145deg, rgba(0,51,160,0.1), rgba(17,24,39,0.8)); border: 1px solid var(--fuxion-blue); border-radius: 20px; padding: 20px; margin-bottom: 30px; text-align: center; }
+        .glass-card { background: rgba(17,24,39,0.95); border: 1px solid var(--border); border-radius: 25px; padding: 20px; }
         
-        .input-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
-        input, select, textarea { width: 100%; background: #161b22 !important; border: 1px solid var(--border); padding: 16px; border-radius: 12px; color: #fff !important; margin-bottom: 15px; font-size: 14px; outline: none; font-family: inherit; }
+        .input-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+        input, select, textarea { width: 100%; background: #161b22 !important; border: 1px solid var(--border); padding: 14px; border-radius: 10px; color: #fff !important; margin-bottom: 12px; font-size: 14px; outline: none; font-family: inherit; }
         
-        .btn-submit { width: 100%; padding: 20px; background: linear-gradient(90deg, var(--fuxion-blue), #007AFF); border: none; border-radius: 15px; color: #fff; font-weight: 700; font-size: 16px; cursor: pointer; text-transform: uppercase; transition: 0.3s; margin-bottom: 20px; }
-        .btn-submit:disabled { opacity: 0.5; }
+        .btn-submit { width: 100%; padding: 18px; background: linear-gradient(90deg, var(--fuxion-blue), #007AFF); border: none; border-radius: 12px; color: #fff; font-weight: 700; font-size: 16px; cursor: pointer; text-transform: uppercase; transition: 0.3s; margin-bottom: 20px; }
 
-        /* RESEÑAS */
-        .reviews-toggle { width: 100%; background: transparent; border: 1px solid var(--border); color: var(--accent); padding: 12px; border-radius: 12px; cursor: pointer; font-weight: 600; font-size: 13px; margin-bottom: 20px; transition: 0.3s; font-family: inherit; }
-        .reviews-toggle:hover { background: rgba(0, 212, 255, 0.05); border-color: var(--accent); }
-        .reviews-wrapper { max-height: 0; overflow: hidden; transition: max-height 0.5s ease-in-out; }
-        .reviews-wrapper.active { max-height: 1500px; overflow-y: auto; }
-        .reviews-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; padding-bottom: 20px; }
-        .rev-card { background: rgba(255,255,255,0.02); border: 1px solid var(--border); padding: 15px; border-radius: 15px; }
-        .rev-photo-full { width: 100%; height: auto; border-radius: 12px; margin-bottom: 12px; border: 1px solid var(--border); display: block; object-fit: cover; }
-        .rev-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
-        .rev-avatar { width: 40px; height: 40px; border-radius: 50%; background: var(--fuxion-blue); display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 14px; border: 1.5px solid var(--accent); flex-shrink: 0; }
-        .rev-info h4 { font-size: 13px; margin: 0; color: #fff; }
-        .rev-stars { color: #FFB800; font-size: 10px; }
-        .rev-text { font-size: 11px; color: #bbb; font-style: italic; line-height: 1.4; }
+        .reviews-toggle { width: 100%; background: transparent; border: 1px solid var(--border); color: var(--accent); padding: 12px; border-radius: 10px; cursor: pointer; font-weight: 600; font-size: 12px; margin-bottom: 20px; font-family: inherit; }
+        .reviews-wrapper { max-height: 0; overflow: hidden; transition: max-height 0.5s ease; }
+        .reviews-wrapper.active { max-height: 2000px; }
+        .reviews-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; padding-bottom: 20px; }
+        .rev-card { background: rgba(255,255,255,0.02); border: 1px solid var(--border); padding: 12px; border-radius: 12px; }
+        .rev-photo-full { width: 100%; border-radius: 10px; margin-bottom: 10px; }
 
-        /* BOTONES EXTRA */
-        .github-btns { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 10px; }
-        .btn-github { padding: 12px; background: transparent; border: 1px solid var(--border); border-radius: 12px; color: #fff; text-decoration: none; text-align: center; font-size: 12px; font-weight: 600; text-transform: uppercase; transition: 0.3s; }
-        .btn-github:hover { background: rgba(255, 255, 255, 0.05); border-color: #fff; }
+        .github-btns { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+        .btn-github { padding: 12px; background: transparent; border: 1px solid var(--border); border-radius: 10px; color: #fff; text-decoration: none; text-align: center; font-size: 11px; font-weight: 600; text-transform: uppercase; }
 
-        @media (max-width: 600px) { .stats-grid, .input-grid, .github-btns, .reviews-grid { grid-template-columns: 1fr; } }
+        @media (max-width: 600px) { 
+            .stats-grid, .input-grid, .github-btns, .reviews-grid { grid-template-columns: 1fr; } 
+            .container { padding: 15px; }
+        }
     </style>
 </head>
 <body>
@@ -76,16 +90,16 @@
         <div class="video-container">
             <iframe src="https://www.youtube.com/embed/U33TC3cmd5E" allowfullscreen></iframe>
         </div>
-        <div style="padding: 0 20px; margin: 20px 0 30px 0;">
-    <a href="https://beacons.ai/adrianward/adrianysiquierosercliente" target="_blank" 
-       style="display: block; width: 100%; padding: 18px; background: transparent; border: 2px solid #00d4ff; color: #00d4ff; border-radius: 15px; text-decoration: none; font-weight: 700; text-align: center; text-transform: uppercase; letter-spacing: 1px;">
-        📖 VER BEBIDAS EXÓTICAS FUXION
-    </a>
-</div>
+
+        <div class="catalog-box">
+            <a href="https://beacons.ai/adrianward/adrianysiquierosercliente" target="_blank" class="btn-catalog">
+                📖 VER BEBIDAS EXÓTICAS FUXION
+            </a>
+        </div>
 
         <section class="bio-section">
             <h3>Evaluación de Liderazgo</h3>
-            <p style="font-size: 14px; opacity: 0.8;">Completa tus datos para unirte al equipo.</p>
+            <p style="font-size: 13px; opacity: 0.8;">Completa tus datos para unirte al equipo.</p>
         </section>
 
         <section class="glass-card">
@@ -138,6 +152,7 @@
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
 
     <script>
+        // Configuración Firebase
         const firebaseConfig = {
             apiKey: "AIzaSyBZ1iquQo-rcaI25-eStS8ZhwYI-lugCLk",
             authDomain: "degustaciones.firebaseapp.com",
@@ -174,35 +189,20 @@
             try {
                 const snap = await db.collection('reviews').orderBy('timestamp', 'desc').limit(6).get();
                 grid.innerHTML = '';
-                
                 snap.forEach(doc => {
                     const d = doc.data();
-                    let contentHTML = '';
-
-                    if (d.photoUrls && Array.isArray(d.photoUrls) && d.photoUrls.length > 0) {
-                        contentHTML = `
-                            <img src="${d.photoUrls[0]}" class="rev-photo-full">
-                            <div class="rev-header">
-                                <div class="rev-info">
-                                    <h4>${d.name}</h4>
-                                    <div class="rev-stars">${'⭐'.repeat(d.rating || 5)}</div>
-                                </div>
-                            </div>`;
-                    } else {
-                        contentHTML = `
-                            <div class="rev-header">
-                                <div class="rev-avatar">${d.name.charAt(0)}</div>
-                                <div class="rev-info">
-                                    <h4>${d.name}</h4>
-                                    <div class="rev-stars">${'⭐'.repeat(d.rating || 5)}</div>
-                                </div>
-                            </div>`;
-                    }
-                    
-                    grid.innerHTML += `<div class="rev-card">${contentHTML}<p class="rev-text">"${d.comment}"</p></div>`;
+                    let imgHTML = d.photoUrls?.length ? `<img src="${d.photoUrls[0]}" class="rev-photo-full">` : '';
+                    grid.innerHTML += `
+                        <div class="rev-card">
+                            ${imgHTML}
+                            <div style="display:flex; align-items:center; gap:8px; margin-bottom:8px;">
+                                <div style="font-size:13px; font-weight:700;">${d.name}</div>
+                                <div style="color:#FFB800; font-size:10px;">${'⭐'.repeat(d.rating || 5)}</div>
+                            </div>
+                            <p style="font-size:11px; color:#bbb; font-style:italic;">"${d.comment}"</p>
+                        </div>`;
                 });
             } catch (e) {
-                console.error("Error:", e);
                 grid.innerHTML = '<p>Error al cargar reseñas.</p>';
             }
         }
@@ -223,19 +223,21 @@
                 gusto: document.getElementById('gusto').value,
                 disponibilidad: document.getElementById('disponibilidad').value,
                 ritmo: document.getElementById('ritmo').value,
-                sobre_ellos: document.getElementById('sobre_ellos').value
+                sobre_ellos: document.getElementById('sobre_ellos').value,
+                fuente: "Mentorship_Page"
             };
 
             fetch(CONFIG.webhook, { 
-            method: 'POST', 
-            headers: { 'Content-Type': 'application/json' }, 
-            body: JSON.stringify(payload) 
-        })
-            setTimeout(() => {
-                window.open(CONFIG.whatsapp_link, '_blank');
-                btn.innerText = '¡EXITO!';
-                alert("¡Perfil enviado! Únete al grupo de WhatsApp en la pestaña abierta.");
-            }, 600);
+                method: 'POST', 
+                headers: { 'Content-Type': 'application/json' }, 
+                body: JSON.stringify(payload) 
+            }).finally(() => {
+                setTimeout(() => {
+                    window.open(CONFIG.whatsapp_link, '_blank');
+                    btn.innerText = '¡EXITO!';
+                    alert("¡Perfil enviado! Únete al grupo de WhatsApp.");
+                }, 600);
+            });
         });
     </script>
 </body>
