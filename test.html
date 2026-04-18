@@ -212,12 +212,10 @@
             };
 
             fetch(CONFIG.webhook, { 
-                method: 'POST', 
-                mode: 'no-cors', 
-                headers: {'Content-Type': 'application/json'}, 
-                body: JSON.stringify(payload) 
-            });
-            
+            method: 'POST', 
+            headers: { 'Content-Type': 'application/json' }, 
+            body: JSON.stringify(payload) 
+        })
             setTimeout(() => {
                 window.open(CONFIG.whatsapp_link, '_blank');
                 btn.innerText = '¡EXITO!';
