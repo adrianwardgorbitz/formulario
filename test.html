@@ -33,10 +33,18 @@
         .stat-number { display: block; font-size: 22px; font-weight: 800; color: #fff; }
         .stat-label { font-size: 10px; color: var(--accent); text-transform: uppercase; font-weight: 600; }
         
-       .video-container {
-    max-width: 850px; /* Evita que el video sea gigante en monitores de 27 pulgadas */
-    margin-left: auto;
-    margin-right: auto;
+      .video-container { 
+    position: relative; 
+    padding-bottom: 56.25%; 
+    height: 0; 
+    border-radius: 20px; 
+    overflow: hidden; 
+    margin-bottom: 30px; 
+    border: 1px solid var(--border);
+    
+    /* AÑADE ESTAS DOS LÍNEAS */
+    max-width: 750px; /* Esto evita que en PC se coma toda la pantalla */
+    margin: 0 auto 30px auto; /* Lo centra y le da espacio abajo */
 }
         .video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
         
