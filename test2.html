@@ -8,7 +8,7 @@
     </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>The Diamond Mentorship <br> ADRIAN WARD</title>
+    <title>The Diamond Mentorship | ADRIAN WARD</title>
     <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/3258/3258502.png" type="image/png">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
     
@@ -23,12 +23,13 @@
         }
 
         .container { width: 100%; max-width: 800px; margin: 0 auto; padding: 20px; }
-        .hero h1 { text-align: center; font-size: clamp(24px, 7vw, 40px); font-weight: 800; margin: 20px 0; letter-spacing: -1px; }
+        .hero { text-align: center; padding: 20px 0; }
+        .hero h1 { font-size: clamp(24px, 7vw, 40px); font-weight: 800; letter-spacing: -1px; line-height: 1.1; }
         
         .stats-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 30px; }
-        .stat-card { background: rgba(255,255,255,0.03); border: 1px solid var(--border); padding: 15px; border-radius: 15px; text-align: center; }
-        .stat-number { display: block; font-size: clamp(16px, 4vw, 22px); font-weight: 800; color: #fff; }
-        .stat-label { font-size: 9px; color: var(--accent); text-transform: uppercase; font-weight: 600; }
+        .stat-card { background: rgba(255,255,255,0.03); border: 1px solid var(--border); padding: 12px 5px; border-radius: 12px; text-align: center; }
+        .stat-number { display: block; font-size: 18px; font-weight: 800; color: #fff; }
+        .stat-label { font-size: 8px; color: var(--accent); text-transform: uppercase; font-weight: 600; letter-spacing: 0.5px; }
         
         .video-container { 
             position: relative; padding-bottom: 56.25%; height: 0; border-radius: 20px; 
@@ -44,23 +45,18 @@
             font-size: 14px; margin-bottom: 30px;
         }
 
-        .bio-section { background: linear-gradient(145deg, rgba(0,51,160,0.1), rgba(17,24,39,0.8)); border: 1px solid var(--fuxion-blue); border-radius: 20px; padding: 20px; margin-bottom: 30px; text-align: center; }
-        .glass-card { background: rgba(17,24,39,0.95); border: 1px solid var(--border); border-radius: 25px; padding: 20px; }
+        .glass-card { background: rgba(17,24,39,0.95); border: 1px solid var(--border); border-radius: 25px; padding: 20px; margin-bottom: 30px; }
         
         .input-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
         input, select, textarea { 
             width: 100%; background: #161b22 !important; border: 1px solid var(--border); 
             padding: 14px; border-radius: 10px; color: #fff !important; margin-bottom: 12px; 
-            font-size: 14px; outline: none; font-family: inherit; appearance: none; -webkit-appearance: none;
-        }
-        select {
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%2300d4ff' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E");
-            background-repeat: no-repeat; background-position: right 15px center;
+            font-size: 14px; outline: none; font-family: inherit;
         }
 
         .btn-submit { width: 100%; padding: 18px; background: linear-gradient(90deg, var(--fuxion-blue), #007AFF); border: none; border-radius: 12px; color: #fff; font-weight: 700; font-size: 16px; cursor: pointer; text-transform: uppercase; transition: 0.3s; margin-bottom: 20px; }
 
-        .reviews-toggle { width: 100%; background: transparent; border: 1px solid var(--border); color: var(--accent); padding: 12px; border-radius: 10px; cursor: pointer; font-weight: 600; font-size: 12px; margin-bottom: 20px; font-family: inherit; }
+        .reviews-toggle { width: 100%; background: transparent; border: 1px solid var(--border); color: var(--accent); padding: 12px; border-radius: 10px; cursor: pointer; font-weight: 600; font-size: 12px; margin-bottom: 20px; }
         .reviews-wrapper { max-height: 0; overflow: hidden; transition: max-height 0.5s ease; }
         .reviews-wrapper.active { max-height: 2500px; }
         .reviews-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; padding-bottom: 20px; }
@@ -70,31 +66,32 @@
         .github-btns { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 10px; }
         .btn-github { padding: 12px; background: transparent; border: 1px solid var(--border); border-radius: 10px; color: #fff; text-decoration: none; text-align: center; font-size: 11px; font-weight: 600; text-transform: uppercase; }
 
-        @media (max-width: 600px) { .stats-grid, .input-grid, .github-btns, .reviews-grid { grid-template-columns: 1fr; } }
+        @media (max-width: 600px) { .input-grid, .github-btns, .reviews-grid { grid-template-columns: 1fr; } }
     </style>
 </head>
 <body>
-   <header class="hero">
-    <h1 style="line-height: 1.1; margin-bottom: 20px;">
-        <span style="font-size: 0.8em; font-weight: 400; display: block; letter-spacing: 2px; opacity: 0.9;">The Diamond Mentorship</span>
-        <span style="font-size: 1.2em; font-weight: 800; color: #fff; letter-spacing: -1px;">ADRIAN WARD</span>
-    </h1>
-</header>
-        
-        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 30px;">
-    <div style="background: rgba(255,255,255,0.03); border: 1px solid var(--border); padding: 12px 5px; border-radius: 12px; text-align: center;">
-        <span style="display: block; font-size: 18px; font-weight: 800; color: #fff;">$8M</span>
-        <span style="font-size: 8px; color: var(--accent); text-transform: uppercase; font-weight: 600; letter-spacing: 0.5px;">Ventas</span>
-    </div>
-    <div style="background: rgba(255,255,255,0.03); border: 1px solid var(--border); padding: 12px 5px; border-radius: 12px; text-align: center;">
-        <span style="display: block; font-size: 18px; font-weight: 800; color: #fff;">20k+</span>
-        <span style="font-size: 8px; color: var(--accent); text-transform: uppercase; font-weight: 600; letter-spacing: 0.5px;">Clientes</span>
-    </div>
-    <div style="background: rgba(255,255,255,0.03); border: 1px solid var(--border); padding: 12px 5px; border-radius: 12px; text-align: center;">
-        <span style="display: block; font-size: 18px; font-weight: 800; color: #fff;">TOP</span>
-        <span style="font-size: 8px; color: var(--accent); text-transform: uppercase; font-weight: 600; letter-spacing: 0.5px;">Millonario</span>
-    </div>
-</div>
+    <div class="container">
+        <header class="hero">
+            <h1>
+                <span style="font-size: 0.8em; font-weight: 400; display: block; letter-spacing: 2px; opacity: 0.9;">The Diamond Mentorship</span>
+                <span style="font-size: 1.2em; font-weight: 800; color: #fff; letter-spacing: -1px;">ADRIAN WARD</span>
+            </h1>
+        </header>
+            
+        <div class="stats-grid">
+            <div class="stat-card">
+                <span class="stat-number">$8M</span>
+                <span class="stat-label">Ventas</span>
+            </div>
+            <div class="stat-card">
+                <span class="stat-number">20k+</span>
+                <span class="stat-label">Clientes</span>
+            </div>
+            <div class="stat-card">
+                <span class="stat-number">TOP</span>
+                <span class="stat-label">Millonario</span>
+            </div>
+        </div>
 
         <div class="video-container">
             <iframe src="https://www.youtube.com/embed/U33TC3cmd5E" allowfullscreen></iframe>
@@ -106,8 +103,8 @@
 
         <div style="text-align: center; margin-bottom: 30px;">
             <h2 style="font-size: clamp(22px, 6vw, 32px); font-weight: 800; line-height: 1.2;">
-                Haz Negocio en la industria multibillonaria de la  Hidratación Funcional <br>
-             
+                Haz Negocio en la industria multibillonaria de la <br>
+                <span style="color: var(--accent);">Hidratación Funcional</span>
             </h2>
         </div>
 
@@ -169,7 +166,7 @@
                     <p style="font-size: 13px; color: #fff; margin: 0; line-height: 1.5;">⚠️ <strong>FILTRO DE ACCESO:</strong> Trabajar con Adrián requiere una inversión de <strong>500€</strong> en tu primer stock. No cobramos por la mentoría, cobramos por el compromiso.</p>
                 </div>
 
-                    <button type="submit" class="btn-submit" id="submitBtn">QUIERO MI IMPERIO <br> ACEPTO EL RETO  </button>
+                <button type="submit" class="btn-submit" id="submitBtn">QUIERO MI IMPERIO <br> ACEPTO EL RETO </button>
             </form>
 
             <button class="reviews-toggle" onclick="toggleReviews()">✨ VER TESTIMONIOS DE CLIENTES <span id="arrow">▼</span></button>
@@ -187,6 +184,7 @@
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
     <script>
+        // CONFIGURACIÓN FIREBASE
         const firebaseConfig = {
             apiKey: "AIzaSyBZ1iquQo-rcaI25-eStS8ZhwYI-lugCLk",
             authDomain: "degustaciones.firebaseapp.com",
@@ -198,6 +196,7 @@
         firebase.initializeApp(firebaseConfig);
         const db = firebase.firestore();
 
+        // LÓGICA REVIEWS
         let reviewsLoaded = false;
         function toggleReviews() {
             const wrapper = document.getElementById('reviewsWrapper');
@@ -229,12 +228,16 @@
             } catch (e) { grid.innerHTML = '<p>Error al cargar reseñas.</p>'; }
         }
 
+        // ENVÍO FORMULARIO A MAKE
         document.getElementById('mentorshipForm').addEventListener('submit', function(e) {
             e.preventDefault();
             const btn = document.getElementById('submitBtn');
-            btn.disabled = true; btn.innerText = 'PROCESANDO...';
             
-            // FUSIONAMOS PREFIJO + NÚMERO
+            if(btn.disabled) return;
+            
+            btn.disabled = true; 
+            btn.innerText = 'ENVIANDO DATOS...';
+            
             const fullPhone = document.getElementById('prefijo').value + " " + document.getElementById('whatsapp').value;
 
             const payload = {
@@ -247,16 +250,27 @@
                 gusto: document.getElementById('gusto').value,
                 disponibilidad: document.getElementById('disponibilidad').value,
                 ritmo: document.getElementById('ritmo').value,
-                sobre_ellos: document.getElementById('sobre_ellos').value
+                sobre_ellos: document.getElementById('sobre_ellos').value,
+                fecha: new Date().toISOString()
             };
             
             fetch("https://hook.eu1.make.com/cmma9n6v7egfcmtdjjx85kuc72p83b3k", { 
-                method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) 
-            }).finally(() => {
+                method: 'POST', 
+                mode: 'no-cors', 
+                headers: { 'Content-Type': 'application/json' }, 
+                body: JSON.stringify(payload) 
+            })
+            .then(() => {
+                btn.innerText = '¡EXITO!';
                 setTimeout(() => {
-                    window.open("https://chat.whatsapp.com/KtBu7mszVBOE2oMdf0bFl1", '_blank');
-                    btn.innerText = '¡ÉXITO!';
-                }, 600);
+                    window.location.href = "https://chat.whatsapp.com/KtBu7mszVBOE2oMdf0bFl1";
+                }, 800);
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+                alert('Hubo un error al enviar. Por favor intenta de nuevo.');
+                btn.disabled = false;
+                btn.innerText = 'REINTENTAR ENVÍO';
             });
         });
     </script>
