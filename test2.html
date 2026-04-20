@@ -172,7 +172,7 @@
                 email: document.getElementById('email').value || "",
                 whatsapp: (prefijo + " " + tel).trim(),
                 instagram: document.getElementById('instagram').value || "No proporcionado",
-                edad: parseInt(document.getElementById('edad').value) || 0,
+                edad: Number(document.getElementById('edad').value),
                 ciudad: document.getElementById('ciudad').value || "No especificada",
                 gusto: document.getElementById('gusto').value || "",
                 disponibilidad: document.getElementById('disponibilidad').value || "",
