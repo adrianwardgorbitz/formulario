@@ -16,7 +16,6 @@
         
         .hero h1 { text-align: center; font-size: clamp(24px, 6vw, 45px); font-weight: 800; margin-bottom: 30px; letter-spacing: -1px; line-height: 1.2; }
 
-        /* INDICADORES EN UNA FILA */
         .stats-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-bottom: 40px; width: 100%; }
         .stat-card { background: rgba(255,255,255,0.03); border: 1px solid var(--border); padding: 12px 4px; border-radius: 15px; text-align: center; }
         .stat-number { display: block; font-size: clamp(14px, 4vw, 22px); font-weight: 800; color: #fff; }
@@ -43,7 +42,10 @@
         .reviews-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; padding-bottom: 20px; }
         .rev-card { background: rgba(255,255,255,0.02); border: 1px solid var(--border); padding: 15px; border-radius: 15px; }
 
-        @media (max-width: 599px) { .input-grid { grid-template-columns: 1fr; } }
+        .github-btns { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 10px; }
+        .btn-github { padding: 12px; background: transparent; border: 1px solid var(--border); border-radius: 12px; color: #fff; text-decoration: none; text-align: center; font-size: 12px; font-weight: 600; text-transform: uppercase; transition: 0.3s; }
+
+        @media (max-width: 599px) { .input-grid, .github-btns { grid-template-columns: 1fr; } }
     </style>
 </head>
 <body>
@@ -67,12 +69,12 @@
 
         <section class="glass-card">
             <div style="background: linear-gradient(145deg, rgba(0, 212, 255, 0.1), rgba(0, 51, 160, 0.1)); border: 1px solid var(--accent); border-radius: 15px; padding: 18px; margin-bottom: 15px; border-left: 5px solid var(--accent);">
-                <h4 style="color: var(--accent); font-size: 13px; text-transform: uppercase; margin-bottom: 8px; font-weight: 800;">🚀 BONO DE VELOCIDAD: "SISTEMA DELEGADO"</h4>
+                <h4 style="color: var(--accent); font-size: 13px; text-transform: uppercase; margin-bottom: 8px; font-weight: 800;">🚀 BONO DE VELOCIDAD"</h4>
                 <p style="font-size: 13px; color: #fff; line-height: 1.4;">Si consigues tus primeros <strong>20 clientes en 15 días</strong>, yo personalmente financio y contrato a un <span style="color: var(--accent); font-weight: 700;">Asistente Virtual para ti por 30 días gratis.</span></p>
             </div>
 
             <div style="background: rgba(0, 212, 255, 0.05); border: 1px dashed #00d4ff; border-radius: 12px; padding: 15px; margin-bottom: 20px; text-align: center;">
-                <p style="font-size: 13px; color: #fff; margin: 0; line-height: 1.5;">⚠️ <strong>FILTRO DE ACCESO:</strong> Trabajar con Adrián requiere una inversión de <strong>500€</strong> en tu primer stock. No cobramos por la mentoría, cobramos por el compromiso.</p>
+                <p style="font-size: 13px; color: #fff; margin: 0; line-height: 1.5;">⚠️ <strong>FILTRO DE ACCESO:</strong> Trabajar con Adrián requiere una inversión de <strong>500€</strong> en tu primer stock. Llena los datos solo si estás de acuerdo.</p>
             </div>
 
             <form id="mentorshipForm">
@@ -131,6 +133,11 @@
             <button class="reviews-toggle" onclick="toggleReviews()">✨ VER TESTIMONIOS DE LOS CLIENTES <span id="arrow">▼</span></button>
             <div id="reviewsWrapper" class="reviews-wrapper">
                 <div id="reviewsGrid" class="reviews-grid"></div>
+            </div>
+
+            <div class="github-btns">
+                <a href="https://adrianwardgorbitz.github.io/liderazgo" target="_blank" class="btn-github">Test de Liderazgo</a>
+                <a href="https://adrianwardgorbitz.github.io/cuestionario" target="_blank" class="btn-github">Test Estilo de Vida</a>
             </div>
         </section>
     </div>
