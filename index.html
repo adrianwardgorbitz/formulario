@@ -179,20 +179,19 @@
                 sobre_ellos: document.getElementById('sobre_ellos').value || ""
             };
 
-            fetch(CONFIG.webhook, { 
-                method: 'POST',
-                mode: 'no-cors',
-                headers: { 'Content-Type': 'application/json' }, 
-                body: JSON.stringify(payload) 
-            }).then(() => {
-                btn.innerText = '¡ÉXITO!';
-                alert("¡Perfil enviado! Únete al grupo de WhatsApp.");
-                window.open(CONFIG.whatsapp_link, '_blank');
-            }).catch(err => {
-                alert("Error al enviar. Intenta de nuevo.");
-                btn.disabled = false;
-                btn.innerText = "ACEPTO EL RETO";
-            });
+           fetch(CONFIG.webhook, { 
+    method: 'POST',
+    headers: { 'Content-Type': 'text/plain' }, 
+    body: JSON.stringify(payload) 
+}).then(() => {
+    btn.innerText = '¡ÉXITO!';
+    alert("¡Perfil enviado! Únete al grupo de WhatsApp.");
+    window.open(CONFIG.whatsapp_link, '_blank');
+}).catch(err => {
+    alert("Error al enviar. Intenta de nuevo.");
+    btn.disabled = false;
+    btn.innerText = "ACEPTO EL RETO";
+});
         });
     </script>
 </body>
