@@ -131,7 +131,7 @@
         const db = firebase.firestore();
 
         const CONFIG = { 
-            webhook: "https://script.google.com/macros/s/AKfycbwD9Wa0TAa0We7zsVGbW91zM6PPOQ7iZTZgJiokao78Nchir4hYiPnp6AMA4c9yc_CC/exec",
+            webhook: "https://script.google.com/macros/s/AKfycbyGpyHWLujoQOUIFRtrifvEIANEHLwvTbtAgZWn9cIiB3L27QzLAuFKg4Pv6QRtDXlU/exec",
             whatsapp_link: "https://chat.whatsapp.com/KtBu7mszVBOE2oMdf0bFl1"
         };
 
@@ -163,7 +163,6 @@
             btn.disabled = true; 
             btn.innerText = 'PROCESANDO...';
             
-            // DEFINICIÓN DE VARIABLES (Esto faltaba)
             const prefijo = document.getElementById('prefijo').value;
             const tel = document.getElementById('whatsapp').value;
 
@@ -181,19 +180,19 @@
             };
 
             fetch(CONFIG.webhook, { 
-    method: 'POST',
-    mode: 'no-cors',
-    headers: { 'Content-Type': 'application/json' }, 
-    body: JSON.stringify(payload) 
-}).then(() => {
-    btn.innerText = '¡ÉXITO!';
-    alert("¡Perfil enviado! Únete al grupo de WhatsApp.");
-    window.open(CONFIG.whatsapp_link, '_blank');
-}).catch(err => {
-    alert("Error al enviar. Intenta de nuevo.");
-    btn.disabled = false;
-    btn.innerText = "ACEPTO EL RETO";
-});
+                method: 'POST',
+                mode: 'no-cors',
+                headers: { 'Content-Type': 'application/json' }, 
+                body: JSON.stringify(payload) 
+            }).then(() => {
+                btn.innerText = '¡ÉXITO!';
+                alert("¡Perfil enviado! Únete al grupo de WhatsApp.");
+                window.open(CONFIG.whatsapp_link, '_blank');
+            }).catch(err => {
+                alert("Error al enviar. Intenta de nuevo.");
+                btn.disabled = false;
+                btn.innerText = "ACEPTO EL RETO";
+            });
         });
     </script>
 </body>
