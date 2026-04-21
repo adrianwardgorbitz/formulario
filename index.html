@@ -13,75 +13,47 @@
         html, body { overflow-x: hidden; width: 100%; margin: 0; padding: 0; background-color: var(--bg); color: #fff; font-family: 'Poppins', sans-serif; line-height: 1.6; color-scheme: dark; }
         .container { width: 100%; max-width: 900px; margin: 0 auto; padding: 20px; }
 
-        .hook-banner {
-            background: linear-gradient(90deg, #0033A0, #007AFF);
-            padding: 10px 20px;
-            text-align: center;
-            font-size: clamp(11px, 2.5vw, 13px);
-            font-weight: 700;
-            letter-spacing: 0.3px;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
+        .hook-banner { background: linear-gradient(90deg, #0033A0, #007AFF); padding: 10px 20px; text-align: center; font-size: clamp(11px, 2.5vw, 13px); font-weight: 700; letter-spacing: 0.3px; position: sticky; top: 0; z-index: 100; }
 
         .hero h1 { text-align: center; font-size: clamp(24px, 6vw, 45px); font-weight: 800; margin-bottom: 10px; letter-spacing: -1px; line-height: 1.2; }
-
-        .hook-line {
-            text-align: center;
-            font-size: clamp(13px, 3vw, 17px);
-            color: var(--accent);
-            font-weight: 600;
-            margin-bottom: 25px;
-            line-height: 1.4;
-        }
+        .hook-line { text-align: center; font-size: clamp(13px, 3vw, 17px); color: var(--accent); font-weight: 600; margin-bottom: 25px; line-height: 1.4; }
 
         .stats-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-bottom: 40px; width: 100%; }
         .stat-card { background: rgba(255,255,255,0.03); border: 1px solid var(--border); padding: 12px 4px; border-radius: 15px; text-align: center; }
         .stat-number { display: block; font-size: clamp(14px, 4vw, 22px); font-weight: 800; color: #fff; }
         .stat-label { font-size: clamp(7px, 2vw, 10px); color: var(--accent); text-transform: uppercase; font-weight: 600; display: block; line-height: 1.2; margin-top: 4px; }
+
+        .video-label { text-align: center; font-size: 12px; text-transform: uppercase; color: rgba(255,255,255,0.4); font-weight: 600; letter-spacing: 1px; margin-bottom: 10px; }
+        .video-title { text-align: center; font-size: clamp(15px, 3.5vw, 20px); font-weight: 800; color: #fff; margin-bottom: 15px; line-height: 1.3; }
         .video-container { position: relative; padding-bottom: 56.25%; height: 0; border-radius: 20px; overflow: hidden; margin: 0 auto 20px auto; border: 1px solid var(--border); width: 100%; max-width: 800px; }
         .video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
 
         .btn-fuxion { display: block; width: 100%; max-width: 800px; margin: 0 auto 30px auto; padding: 16px; background: linear-gradient(90deg, #00d4ff, #0033A0); border: none; border-radius: 15px; color: #fff; font-weight: 700; font-size: 15px; cursor: pointer; text-transform: uppercase; text-align: center; text-decoration: none; letter-spacing: 0.5px; transition: opacity 0.3s; }
         .btn-fuxion:hover { opacity: 0.85; }
 
-        .origin-section {
-            background: linear-gradient(145deg, rgba(0,51,160,0.08), rgba(0,0,0,0.6));
-            border: 1px solid rgba(0,212,255,0.2);
-            border-left: 4px solid var(--accent);
-            border-radius: 20px;
-            padding: 25px;
-            margin-bottom: 30px;
-        }
-        .origin-section h3 {
-            font-size: 13px;
-            text-transform: uppercase;
-            color: var(--accent);
-            font-weight: 800;
-            margin-bottom: 12px;
-            letter-spacing: 1px;
-        }
-        .origin-section p {
-            font-size: 14px;
-            opacity: 0.85;
-            line-height: 1.7;
-        }
+        /* ORIGIN */
+        .origin-section { background: linear-gradient(145deg, rgba(0,51,160,0.08), rgba(0,0,0,0.6)); border: 1px solid rgba(0,212,255,0.2); border-left: 4px solid var(--accent); border-radius: 20px; padding: 25px; margin-bottom: 30px; }
+        .origin-section h3 { font-size: 13px; text-transform: uppercase; color: var(--accent); font-weight: 800; margin-bottom: 12px; letter-spacing: 1px; }
+        .origin-section p { font-size: 14px; opacity: 0.85; line-height: 1.7; }
         .origin-section p strong { color: #fff; }
 
-        /* MILLONARIOS */
-        .millonarios-badge {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            background: linear-gradient(135deg, rgba(255,215,0,0.08), rgba(255,165,0,0.05));
-            border: 1px solid rgba(255,215,0,0.3);
-            border-radius: 15px;
-            padding: 15px 18px;
-            margin-top: 15px;
-        }
+        .millonarios-badge { display: flex; align-items: center; gap: 12px; background: linear-gradient(135deg, rgba(255,215,0,0.08), rgba(255,165,0,0.05)); border: 1px solid rgba(255,215,0,0.3); border-radius: 15px; padding: 15px 18px; margin-top: 15px; }
         .millonarios-badge .icon { font-size: 22px; flex-shrink: 0; }
         .millonarios-badge p { font-size: 13px; color: #ffd700; font-weight: 600; line-height: 1.4; margin: 0; }
+
+        /* BENEFICIOS */
+        .beneficios-section { margin-bottom: 30px; }
+        .beneficios-section h3 { font-size: 13px; text-transform: uppercase; color: rgba(255,255,255,0.5); font-weight: 700; letter-spacing: 1px; margin-bottom: 15px; text-align: center; }
+        .beneficio-card { display: flex; align-items: flex-start; gap: 15px; background: rgba(255,255,255,0.02); border: 1px solid var(--border); border-radius: 15px; padding: 18px; margin-bottom: 10px; }
+        .beneficio-icon { font-size: 24px; flex-shrink: 0; margin-top: 2px; }
+        .beneficio-title { font-size: 14px; font-weight: 800; color: #fff; margin-bottom: 4px; }
+        .beneficio-desc { font-size: 13px; color: rgba(255,255,255,0.65); line-height: 1.5; }
+        .beneficio-desc strong { color: var(--accent); }
+
+        /* ENROLLMENT BTN */
+        .btn-enrollment { display: block; width: 100%; padding: 20px; background: linear-gradient(90deg, #00b843, #007AFF); border: none; border-radius: 15px; color: #fff; font-weight: 800; font-size: clamp(14px, 3.5vw, 17px); cursor: pointer; text-transform: uppercase; text-align: center; text-decoration: none; letter-spacing: 0.5px; transition: opacity 0.3s; margin-bottom: 30px; line-height: 1.3; }
+        .btn-enrollment:hover { opacity: 0.88; }
+        .btn-enrollment small { display: block; font-size: 11px; font-weight: 400; opacity: 0.8; margin-top: 4px; text-transform: none; letter-spacing: 0; }
 
         .bio-section { background: linear-gradient(145deg, rgba(0,51,160,0.1), rgba(17,24,39,0.8)); border: 1px solid var(--fuxion-blue); border-radius: 25px; padding: 25px; margin-bottom: 40px; text-align: center; }
         .glass-card { background: rgba(17,24,39,0.95); border: 1px solid var(--border); border-radius: 30px; padding: 30px; }
@@ -92,66 +64,15 @@
         .btn-submit { width: 100%; padding: 20px; background: linear-gradient(90deg, var(--fuxion-blue), #007AFF); border: none; border-radius: 15px; color: #fff; font-weight: 700; font-size: 16px; cursor: pointer; text-transform: uppercase; transition: 0.3s; margin-bottom: 20px; line-height: 1.3; text-align: center; }
         .btn-submit:disabled { opacity: 0.5; cursor: not-allowed; }
 
-        /* SCARCITY */
-        .scarcity-bar {
-            background: rgba(255,59,59,0.08);
-            border: 1px solid rgba(255,59,59,0.3);
-            border-radius: 12px;
-            padding: 12px 16px;
-            margin-bottom: 20px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-size: 13px;
-        }
-        .scarcity-dot {
-            width: 8px;
-            height: 8px;
-            background: var(--red);
-            border-radius: 50%;
-            flex-shrink: 0;
-            animation: pulse 1.5s infinite;
-        }
-        @keyframes pulse {
-            0%, 100% { opacity: 1; transform: scale(1); }
-            50% { opacity: 0.5; transform: scale(1.3); }
-        }
+        .scarcity-bar { background: rgba(255,59,59,0.08); border: 1px solid rgba(255,59,59,0.3); border-radius: 12px; padding: 12px 16px; margin-bottom: 20px; display: flex; align-items: center; gap: 10px; font-size: 13px; }
+        .scarcity-dot { width: 8px; height: 8px; background: var(--red); border-radius: 50%; flex-shrink: 0; animation: pulse 1.5s infinite; }
+        @keyframes pulse { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.5; transform: scale(1.3); } }
         .scarcity-text { color: #ffaaaa; font-weight: 600; line-height: 1.4; }
 
-        /* CHECKBOX 500€ */
-        .filter-box {
-            background: rgba(0, 212, 255, 0.05);
-            border: 1px dashed #00d4ff;
-            border-radius: 12px;
-            padding: 15px;
-            margin-bottom: 20px;
-        }
-        .filter-box p {
-            font-size: 13px;
-            color: #fff;
-            margin: 0 0 12px 0;
-            line-height: 1.5;
-            text-align: center;
-        }
-        .checkbox-label {
-            display: flex;
-            align-items: flex-start;
-            gap: 10px;
-            cursor: pointer;
-            font-size: 13px;
-            color: rgba(255,255,255,0.8);
-            line-height: 1.4;
-        }
-        .checkbox-label input[type="checkbox"] {
-            width: 18px !important;
-            height: 18px !important;
-            min-width: 18px;
-            padding: 0 !important;
-            margin: 2px 0 0 0 !important;
-            accent-color: var(--accent);
-            cursor: pointer;
-            flex-shrink: 0;
-        }
+        .filter-box { background: rgba(0, 212, 255, 0.05); border: 1px dashed #00d4ff; border-radius: 12px; padding: 15px; margin-bottom: 20px; }
+        .filter-box p { font-size: 13px; color: #fff; margin: 0 0 12px 0; line-height: 1.5; text-align: center; }
+        .checkbox-label { display: flex; align-items: flex-start; gap: 10px; cursor: pointer; font-size: 13px; color: rgba(255,255,255,0.8); line-height: 1.4; }
+        .checkbox-label input[type="checkbox"] { width: 18px !important; height: 18px !important; min-width: 18px; padding: 0 !important; margin: 2px 0 0 0 !important; accent-color: var(--accent); cursor: pointer; flex-shrink: 0; }
         .checkbox-label span strong { color: var(--accent); }
 
         .reviews-toggle { width: 100%; background: transparent; border: 1px solid var(--border); color: var(--accent); padding: 12px; border-radius: 12px; cursor: pointer; font-weight: 600; font-size: 13px; margin-bottom: 20px; transition: 0.3s; font-family: inherit; }
@@ -167,7 +88,7 @@
 <body>
 
     <div class="hook-banner">
-        🏙️ 1 socio estratégico por ciudad — <span id="spots">Sé el primero en la tuya</span>
+        🏙️ 1 socio estratégico por ciudad — Sé el primero en la tuya
     </div>
 
     <div class="container">
@@ -182,6 +103,8 @@
             <div class="stat-card"><span class="stat-number">TOP</span><span class="stat-label">Hall Millonario</span></div>
         </div>
 
+        <p class="video-label">▶ Mira el video primero</p>
+        <p class="video-title">Tus primeros 1.000€ con FuXion</p>
         <div class="video-container">
             <iframe src="https://www.youtube.com/embed/U33TC3cmd5E" allowfullscreen></iframe>
         </div>
@@ -192,13 +115,44 @@
 
         <div class="origin-section">
             <h3>📍 De Lima a 15 países</h3>
-            <p>En 2011 me invitaron a un bbq. No sabía que esa tarde cambiaría todo. Tenía 20 años, cero experiencia en negocios y acababa de volver de trabajar como lavaplatos en Canadá. <strong>Dije sí cuando todos los demás dijeron no.</strong> Cuatro años después era el Diamond más joven en la historia de FuXion. Hoy gestionamos en equipo más de 20.000 clientes en 15 países. No porque sea especial, sino porque encontre un producto excepcional y aprendí los principios del éxito.</p>
-
+            <p>En 2011 me invitaron a un bbq. No sabía que esa tarde cambiaría todo. Tenía 20 años, cero experiencia en negocios y acababa de volver de trabajar como lavaplatos en Canadá. <strong>Dije sí cuando todos los demás dijeron no.</strong> Cuatro años después era el Diamond más joven en la historia de FuXion. Hoy gestionamos en equipo más de 20.000 clientes en 15 países. No porque sea especial, sino porque encontré un producto excepcional y aprendí los principios del éxito.</p>
             <div class="millonarios-badge">
                 <div class="icon">🏆</div>
                 <p>Ya están saliendo los primeros millonarios del equipo. Los próximos 5 años pueden determinar todo para ti.</p>
             </div>
         </div>
+
+        <!-- BENEFICIOS -->
+        <div class="beneficios-section">
+            <h3>Lo que incluye el acompañamiento</h3>
+            <div class="beneficio-card">
+                <div class="beneficio-icon">🤖</div>
+                <div>
+                    <div class="beneficio-title">Asistente Virtual — 30 días gratis</div>
+                    <div class="beneficio-desc">Si consigues tus primeros <strong>20 clientes en 15 días</strong>, yo financio y contrato un asistente virtual para ti durante un mes completo.</div>
+                </div>
+            </div>
+            <div class="beneficio-card">
+                <div class="beneficio-icon">🤝</div>
+                <div>
+                    <div class="beneficio-title">Acompañamiento en tu lanzamiento</div>
+                    <div class="beneficio-desc">No arrancas solo. Estoy contigo en tus <strong>primeras reuniones de lanzamiento de negocio.</strong> Te ayudo a presentar, cerrar y construir desde el día uno.</div>
+                </div>
+            </div>
+            <div class="beneficio-card">
+                <div class="beneficio-icon">✈️</div>
+                <div>
+                    <div class="beneficio-title">Viajo a tu ciudad</div>
+                    <div class="beneficio-desc">Si posicionas <strong>300 cajas</strong> o reúnes <strong>30 personas con entrada pagada y hotel reservado</strong>, voy en persona a hacer un evento contigo.</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ENROLLMENT -->
+        <a href="https://www.ifuxion.com/adrianward/enrollment/enrollmentconfiguration?CustomerTypeID=1" target="_blank" class="btn-enrollment">
+            🚀 Abrir mi negocio FuXion ahora
+            <small>Empieza hoy | Cupo único por ciudad</small>
+        </a>
 
         <section class="bio-section">
             <h3>HAZ NEGOCIO EN LA INDUSTRIA</h3>
@@ -206,21 +160,14 @@
         </section>
 
         <section class="glass-card">
-            <div style="background: linear-gradient(145deg, rgba(0, 212, 255, 0.1), rgba(0, 51, 160, 0.1)); border: 1px solid var(--accent); border-radius: 15px; padding: 18px; margin-bottom: 15px; border-left: 5px solid var(--accent);">
-                <h4 style="color: var(--accent); font-size: 13px; text-transform: uppercase; margin-bottom: 8px; font-weight: 800;">🚀 BONO DE VELOCIDAD</h4>
-                <p style="font-size: 13px; color: #fff; line-height: 1.4;">Si consigues tus primeros <strong>20 clientes en 15 días</strong>, yo personalmente financio y contrato a un <span style="color: var(--accent); font-weight: 700;">Asistente Virtual para ti por 30 días gratis.</span></p>
-            </div>
-
-            <!-- SCARCITY -->
-            <div class="scarcity-bar">
+                        <div class="scarcity-bar">
                 <div class="scarcity-dot"></div>
-                <span class="scarcity-text">🏙️ Solo <strong>1 socio estratégico por ciudad</strong> — una vez confirmado tu cupo, esa ciudad queda cerrada.</span>
+                <span class="scarcity-text">🏙️ Solo <strong>1 socio estratégico por ciudad</strong> | Una vez confirmado tu cupo, esa ciudad queda cerrada.</span>
             </div>
 
-            <!-- CHECKBOX 500€ -->
             <div class="filter-box">
                 <p>⚠️ <strong>FILTRO DE ACCESO:</strong> Trabajar con Adrián requiere una inversión de <strong>500€</strong> en tu primer stock.</p>
-                <label class="checkbox-label" id="checkLabel">
+                <label class="checkbox-label">
                     <input type="checkbox" id="acuerdo" onchange="toggleSubmit()">
                     <span>Entiendo y acepto que para iniciar necesito una inversión de <strong>500€ en producto</strong>. Estoy listo para comenzar.</span>
                 </label>
