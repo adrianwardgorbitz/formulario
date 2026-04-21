@@ -8,19 +8,81 @@
     <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/3258/3258502.png" type="image/png">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
     <style>
-        :root { --fuxion-blue: #0033A0; --accent: #00d4ff; --bg: #05070a; --border: rgba(255,255,255,0.15); }
+        :root { --fuxion-blue: #0033A0; --accent: #00d4ff; --bg: #05070a; --border: rgba(255,255,255,0.15); --red: #ff3b3b; }
         * { margin: 0; padding: 0; box-sizing: border-box; }
         html, body { overflow-x: hidden; width: 100%; margin: 0; padding: 0; background-color: var(--bg); color: #fff; font-family: 'Poppins', sans-serif; line-height: 1.6; color-scheme: dark; }
         .container { width: 100%; max-width: 900px; margin: 0 auto; padding: 20px; }
-        .hero h1 { text-align: center; font-size: clamp(24px, 6vw, 45px); font-weight: 800; margin-bottom: 30px; letter-spacing: -1px; line-height: 1.2; }
+
+        .hook-banner {
+            background: linear-gradient(90deg, #0033A0, #007AFF);
+            padding: 10px 20px;
+            text-align: center;
+            font-size: clamp(11px, 2.5vw, 13px);
+            font-weight: 700;
+            letter-spacing: 0.3px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .hero h1 { text-align: center; font-size: clamp(24px, 6vw, 45px); font-weight: 800; margin-bottom: 10px; letter-spacing: -1px; line-height: 1.2; }
+
+        .hook-line {
+            text-align: center;
+            font-size: clamp(13px, 3vw, 17px);
+            color: var(--accent);
+            font-weight: 600;
+            margin-bottom: 25px;
+            line-height: 1.4;
+        }
+
         .stats-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-bottom: 40px; width: 100%; }
         .stat-card { background: rgba(255,255,255,0.03); border: 1px solid var(--border); padding: 12px 4px; border-radius: 15px; text-align: center; }
         .stat-number { display: block; font-size: clamp(14px, 4vw, 22px); font-weight: 800; color: #fff; }
         .stat-label { font-size: clamp(7px, 2vw, 10px); color: var(--accent); text-transform: uppercase; font-weight: 600; display: block; line-height: 1.2; margin-top: 4px; }
         .video-container { position: relative; padding-bottom: 56.25%; height: 0; border-radius: 20px; overflow: hidden; margin: 0 auto 20px auto; border: 1px solid var(--border); width: 100%; max-width: 800px; }
         .video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
+
         .btn-fuxion { display: block; width: 100%; max-width: 800px; margin: 0 auto 30px auto; padding: 16px; background: linear-gradient(90deg, #00d4ff, #0033A0); border: none; border-radius: 15px; color: #fff; font-weight: 700; font-size: 15px; cursor: pointer; text-transform: uppercase; text-align: center; text-decoration: none; letter-spacing: 0.5px; transition: opacity 0.3s; }
         .btn-fuxion:hover { opacity: 0.85; }
+
+        .origin-section {
+            background: linear-gradient(145deg, rgba(0,51,160,0.08), rgba(0,0,0,0.6));
+            border: 1px solid rgba(0,212,255,0.2);
+            border-left: 4px solid var(--accent);
+            border-radius: 20px;
+            padding: 25px;
+            margin-bottom: 30px;
+        }
+        .origin-section h3 {
+            font-size: 13px;
+            text-transform: uppercase;
+            color: var(--accent);
+            font-weight: 800;
+            margin-bottom: 12px;
+            letter-spacing: 1px;
+        }
+        .origin-section p {
+            font-size: 14px;
+            opacity: 0.85;
+            line-height: 1.7;
+        }
+        .origin-section p strong { color: #fff; }
+
+        /* MILLONARIOS */
+        .millonarios-badge {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            background: linear-gradient(135deg, rgba(255,215,0,0.08), rgba(255,165,0,0.05));
+            border: 1px solid rgba(255,215,0,0.3);
+            border-radius: 15px;
+            padding: 15px 18px;
+            margin-top: 15px;
+        }
+        .millonarios-badge .icon { font-size: 22px; flex-shrink: 0; }
+        .millonarios-badge p { font-size: 13px; color: #ffd700; font-weight: 600; line-height: 1.4; margin: 0; }
+
         .bio-section { background: linear-gradient(145deg, rgba(0,51,160,0.1), rgba(17,24,39,0.8)); border: 1px solid var(--fuxion-blue); border-radius: 25px; padding: 25px; margin-bottom: 40px; text-align: center; }
         .glass-card { background: rgba(17,24,39,0.95); border: 1px solid var(--border); border-radius: 30px; padding: 30px; }
         .input-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
@@ -28,7 +90,70 @@
         .phone-input-container { display: flex; gap: 8px; }
         .phone-input-container select { width: 90px; flex-shrink: 0; }
         .btn-submit { width: 100%; padding: 20px; background: linear-gradient(90deg, var(--fuxion-blue), #007AFF); border: none; border-radius: 15px; color: #fff; font-weight: 700; font-size: 16px; cursor: pointer; text-transform: uppercase; transition: 0.3s; margin-bottom: 20px; line-height: 1.3; text-align: center; }
-        .btn-submit:disabled { opacity: 0.5; }
+        .btn-submit:disabled { opacity: 0.5; cursor: not-allowed; }
+
+        /* SCARCITY */
+        .scarcity-bar {
+            background: rgba(255,59,59,0.08);
+            border: 1px solid rgba(255,59,59,0.3);
+            border-radius: 12px;
+            padding: 12px 16px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 13px;
+        }
+        .scarcity-dot {
+            width: 8px;
+            height: 8px;
+            background: var(--red);
+            border-radius: 50%;
+            flex-shrink: 0;
+            animation: pulse 1.5s infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(1.3); }
+        }
+        .scarcity-text { color: #ffaaaa; font-weight: 600; line-height: 1.4; }
+
+        /* CHECKBOX 500€ */
+        .filter-box {
+            background: rgba(0, 212, 255, 0.05);
+            border: 1px dashed #00d4ff;
+            border-radius: 12px;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+        .filter-box p {
+            font-size: 13px;
+            color: #fff;
+            margin: 0 0 12px 0;
+            line-height: 1.5;
+            text-align: center;
+        }
+        .checkbox-label {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            cursor: pointer;
+            font-size: 13px;
+            color: rgba(255,255,255,0.8);
+            line-height: 1.4;
+        }
+        .checkbox-label input[type="checkbox"] {
+            width: 18px !important;
+            height: 18px !important;
+            min-width: 18px;
+            padding: 0 !important;
+            margin: 2px 0 0 0 !important;
+            accent-color: var(--accent);
+            cursor: pointer;
+            flex-shrink: 0;
+        }
+        .checkbox-label span strong { color: var(--accent); }
+
         .reviews-toggle { width: 100%; background: transparent; border: 1px solid var(--border); color: var(--accent); padding: 12px; border-radius: 12px; cursor: pointer; font-weight: 600; font-size: 13px; margin-bottom: 20px; transition: 0.3s; font-family: inherit; }
         .reviews-wrapper { max-height: 0; overflow: hidden; transition: max-height 0.5s ease-in-out; }
         .reviews-wrapper.active { max-height: 1500px; overflow-y: auto; }
@@ -40,31 +165,67 @@
     </style>
 </head>
 <body>
+
+    <div class="hook-banner">
+        🏙️ 1 socio estratégico por ciudad — <span id="spots">Sé el primero en la tuya</span>
+    </div>
+
     <div class="container">
-        <header class="hero"><h1>The Diamond Mentorship <br> ADRIAN WARD</h1></header>
+        <header class="hero">
+            <h1>The Diamond Mentorship <br> ADRIAN WARD</h1>
+            <p class="hook-line">Construí un negocio de $8M en 15 países sin experiencia previa.</p>
+        </header>
+
         <div class="stats-grid">
             <div class="stat-card"><span class="stat-number">$8M</span><span class="stat-label">Ventas 2025</span></div>
             <div class="stat-card"><span class="stat-number">20k+</span><span class="stat-label">Clientes Mensuales</span></div>
             <div class="stat-card"><span class="stat-number">TOP</span><span class="stat-label">Hall Millonario</span></div>
         </div>
+
         <div class="video-container">
             <iframe src="https://www.youtube.com/embed/U33TC3cmd5E" allowfullscreen></iframe>
         </div>
+
         <a href="https://beacons.ai/adrianward/adrianysiquierosercliente" target="_blank" class="btn-fuxion">
             🥤 Bebidas Funcionales FuXion
         </a>
+
+        <div class="origin-section">
+            <h3>📍 De Lima a 15 países</h3>
+            <p>En 2011 me invitaron a un bbq. No sabía que esa tarde cambiaría todo. Tenía 20 años, cero experiencia en negocios y acababa de volver de trabajar como lavaplatos en Canadá. <strong>Dije sí cuando todos los demás dijeron no.</strong> Cuatro años después era el Diamond más joven en la historia de FuXion. Hoy gestionamos en equipo más de 20.000 clientes en 15 países. No porque sea especial, sino porque encontre un producto excepcional y aprendí los principios del éxito.</p>
+
+            <div class="millonarios-badge">
+                <div class="icon">🏆</div>
+                <p>Ya están saliendo los primeros millonarios del equipo. Los próximos 5 años pueden determinar todo para ti.</p>
+            </div>
+        </div>
+
         <section class="bio-section">
             <h3>HAZ NEGOCIO EN LA INDUSTRIA</h3>
             <p style="font-size: 14px; opacity: 0.8;">MULTIBILLONARIA DE LAS BEBIDAS FUNCIONALES.</p>
         </section>
+
         <section class="glass-card">
             <div style="background: linear-gradient(145deg, rgba(0, 212, 255, 0.1), rgba(0, 51, 160, 0.1)); border: 1px solid var(--accent); border-radius: 15px; padding: 18px; margin-bottom: 15px; border-left: 5px solid var(--accent);">
                 <h4 style="color: var(--accent); font-size: 13px; text-transform: uppercase; margin-bottom: 8px; font-weight: 800;">🚀 BONO DE VELOCIDAD</h4>
                 <p style="font-size: 13px; color: #fff; line-height: 1.4;">Si consigues tus primeros <strong>20 clientes en 15 días</strong>, yo personalmente financio y contrato a un <span style="color: var(--accent); font-weight: 700;">Asistente Virtual para ti por 30 días gratis.</span></p>
             </div>
-            <div style="background: rgba(0, 212, 255, 0.05); border: 1px dashed #00d4ff; border-radius: 12px; padding: 15px; margin-bottom: 20px; text-align: center;">
-                <p style="font-size: 13px; color: #fff; margin: 0; line-height: 1.5;">⚠️ <strong>FILTRO DE ACCESO:</strong> Trabajar con Adrián requiere una inversión de <strong>500€</strong> en tu primer stock. Llena los datos solo si estás de acuerdo.</p>
+
+            <!-- SCARCITY -->
+            <div class="scarcity-bar">
+                <div class="scarcity-dot"></div>
+                <span class="scarcity-text">🏙️ Solo <strong>1 socio estratégico por ciudad</strong> — una vez confirmado tu cupo, esa ciudad queda cerrada.</span>
             </div>
+
+            <!-- CHECKBOX 500€ -->
+            <div class="filter-box">
+                <p>⚠️ <strong>FILTRO DE ACCESO:</strong> Trabajar con Adrián requiere una inversión de <strong>500€</strong> en tu primer stock.</p>
+                <label class="checkbox-label" id="checkLabel">
+                    <input type="checkbox" id="acuerdo" onchange="toggleSubmit()">
+                    <span>Entiendo y acepto que para iniciar necesito una inversión de <strong>500€ en producto</strong>. Estoy listo para comenzar.</span>
+                </label>
+            </div>
+
             <form id="mentorshipForm">
                 <div class="input-grid">
                     <input type="text" id="nombre" placeholder="Nombre completo" required>
@@ -109,8 +270,9 @@
                     </select>
                 </div>
                 <textarea id="sobre_ellos" placeholder="Cuéntame sobre ti..." rows="3" required></textarea>
-                <button type="submit" class="btn-submit" id="submitBtn">ACEPTO EL RETO <br> QUIERO CONSTRUIR MI IMPERIO</button>
+                <button type="submit" class="btn-submit" id="submitBtn" disabled>ACEPTO EL RETO <br> QUIERO CONSTRUIR MI IMPERIO</button>
             </form>
+
             <button class="reviews-toggle" onclick="toggleReviews()">✨ VER TESTIMONIOS DE LOS CLIENTES <span id="arrow">▼</span></button>
             <div id="reviewsWrapper" class="reviews-wrapper">
                 <div id="reviewsGrid" class="reviews-grid"></div>
@@ -141,6 +303,11 @@
             whatsapp_link: "https://chat.whatsapp.com/KtBu7mszVBOE2oMdf0bFl1"
         };
 
+        function toggleSubmit() {
+            const checked = document.getElementById('acuerdo').checked;
+            document.getElementById('submitBtn').disabled = !checked;
+        }
+
         function toggleReviews() {
             const wrapper = document.getElementById('reviewsWrapper');
             const arrow = document.getElementById('arrow');
@@ -165,6 +332,10 @@
 
         document.getElementById('mentorshipForm').addEventListener('submit', function(e) {
             e.preventDefault();
+            if (!document.getElementById('acuerdo').checked) {
+                alert('Por favor confirma que aceptas la inversión inicial de 500€.');
+                return;
+            }
             const btn = document.getElementById('submitBtn');
             btn.disabled = true; 
             btn.innerText = 'PROCESANDO...';
