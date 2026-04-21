@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -16,8 +17,10 @@
         .stat-card { background: rgba(255,255,255,0.03); border: 1px solid var(--border); padding: 12px 4px; border-radius: 15px; text-align: center; }
         .stat-number { display: block; font-size: clamp(14px, 4vw, 22px); font-weight: 800; color: #fff; }
         .stat-label { font-size: clamp(7px, 2vw, 10px); color: var(--accent); text-transform: uppercase; font-weight: 600; display: block; line-height: 1.2; margin-top: 4px; }
-        .video-container { position: relative; padding-bottom: 56.25%; height: 0; border-radius: 20px; overflow: hidden; margin: 0 auto 30px auto; border: 1px solid var(--border); width: 100%; max-width: 800px; }
+        .video-container { position: relative; padding-bottom: 56.25%; height: 0; border-radius: 20px; overflow: hidden; margin: 0 auto 20px auto; border: 1px solid var(--border); width: 100%; max-width: 800px; }
         .video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
+        .btn-fuxion { display: block; width: 100%; max-width: 800px; margin: 0 auto 30px auto; padding: 16px; background: linear-gradient(90deg, #00d4ff, #0033A0); border: none; border-radius: 15px; color: #fff; font-weight: 700; font-size: 15px; cursor: pointer; text-transform: uppercase; text-align: center; text-decoration: none; letter-spacing: 0.5px; transition: opacity 0.3s; }
+        .btn-fuxion:hover { opacity: 0.85; }
         .bio-section { background: linear-gradient(145deg, rgba(0,51,160,0.1), rgba(17,24,39,0.8)); border: 1px solid var(--fuxion-blue); border-radius: 25px; padding: 25px; margin-bottom: 40px; text-align: center; }
         .glass-card { background: rgba(17,24,39,0.95); border: 1px solid var(--border); border-radius: 30px; padding: 30px; }
         .input-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
@@ -47,6 +50,9 @@
         <div class="video-container">
             <iframe src="https://www.youtube.com/embed/U33TC3cmd5E" allowfullscreen></iframe>
         </div>
+        <a href="https://beacons.ai/adrianward/adrianysiquierosercliente" target="_blank" class="btn-fuxion">
+            🥤 Bebidas Funcionales FuXion
+        </a>
         <section class="bio-section">
             <h3>HAZ NEGOCIO EN LA INDUSTRIA</h3>
             <p style="font-size: 14px; opacity: 0.8;">MULTIBILLONARIA DE LAS BEBIDAS FUNCIONALES.</p>
@@ -179,19 +185,19 @@
                 sobre_ellos: document.getElementById('sobre_ellos').value || ""
             };
 
-           fetch(CONFIG.webhook, { 
-    method: 'POST',
-    headers: { 'Content-Type': 'text/plain' }, 
-    body: JSON.stringify(payload) 
-}).then(() => {
-    btn.innerText = '¡ÉXITO!';
-    alert("¡Perfil enviado! Únete al grupo de WhatsApp.");
-    window.open(CONFIG.whatsapp_link, '_blank');
-}).catch(err => {
-    alert("Error al enviar. Intenta de nuevo.");
-    btn.disabled = false;
-    btn.innerText = "ACEPTO EL RETO";
-});
+            fetch(CONFIG.webhook, { 
+                method: 'POST',
+                headers: { 'Content-Type': 'text/plain' }, 
+                body: JSON.stringify(payload) 
+            }).then(() => {
+                btn.innerText = '¡ÉXITO!';
+                alert("¡Perfil enviado! Únete al grupo de WhatsApp.");
+                window.open(CONFIG.whatsapp_link, '_blank');
+            }).catch(err => {
+                alert("Error al enviar. Intenta de nuevo.");
+                btn.disabled = false;
+                btn.innerText = "ACEPTO EL RETO";
+            });
         });
     </script>
 </body>
