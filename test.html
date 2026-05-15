@@ -2,146 +2,215 @@
 <html lang="es">
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<style>
-    html, body {
-        overflow-x: hidden; /* Evita que la página se mueva hacia los lados */
-        width: 100%;
-        margin: 0;
-        padding: 0;
-    }
-</style>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Diamond Mentorship - Adrian Ward</title>
     <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/3258/3258502.png" type="image/png">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
-    
     <style>
-        :root { --fuxion-blue: #0033A0; --accent: #00d4ff; --bg: #05070a; --border: rgba(255,255,255,0.15); }
+        :root { --fuxion-blue: #0033A0; --accent: #00d4ff; --bg: #05070a; --border: rgba(255,255,255,0.15); --red: #ff3b3b; }
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Poppins', sans-serif; background-color: var(--bg); color: #fff; line-height: 1.6; color-scheme: dark; }
-    .container { 
-    width: 100%; 
-    max-width: 900px; /* Un punto medio perfecto para que One.com no se asuste */
-    margin: 0 auto; 
-    padding: 20px;
-    box-sizing: border-box;
-}
-        .hero h1 { text-align: center; font-size: clamp(28px, 7vw, 45px); font-weight: 800; margin-bottom: 30px; letter-spacing: -1px; }
+        html, body { overflow-x: hidden; width: 100%; margin: 0; padding: 0; background-color: var(--bg); color: #fff; font-family: 'Poppins', sans-serif; line-height: 1.6; color-scheme: dark; }
+        .container { width: 100%; max-width: 900px; margin: 0 auto; padding: 20px; }
+
+        .hook-banner { background: linear-gradient(90deg, #0033A0, #007AFF); padding: 10px 20px; text-align: center; font-size: clamp(11px, 2.5vw, 13px); font-weight: 700; letter-spacing: 0.3px; position: sticky; top: 0; z-index: 100; }
+
+        .hero h1 { text-align: center; font-size: clamp(24px, 6vw, 45px); font-weight: 800; margin-bottom: 10px; letter-spacing: -1px; line-height: 1.2; }
+        .hook-line { text-align: center; font-size: clamp(13px, 3vw, 17px); color: var(--accent); font-weight: 600; margin-bottom: 25px; line-height: 1.4; }
+
+        .stats-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-bottom: 40px; width: 100%; }
+        .stat-card { background: rgba(255,255,255,0.03); border: 1px solid var(--border); padding: 12px 4px; border-radius: 15px; text-align: center; }
+        .stat-number { display: block; font-size: clamp(14px, 4vw, 22px); font-weight: 800; color: #fff; }
+        .stat-label { font-size: clamp(7px, 2vw, 10px); color: var(--accent); text-transform: uppercase; font-weight: 600; display: block; line-height: 1.2; margin-top: 4px; }
+
+        .video-label { text-align: center; font-size: 12px; text-transform: uppercase; color: rgba(255,255,255,0.4); font-weight: 600; letter-spacing: 1px; margin-bottom: 10px; }
+        .video-title { text-align: center; font-size: clamp(15px, 3.5vw, 20px); font-weight: 800; color: #fff; margin-bottom: 15px; line-height: 1.3; }
         
-        .stats-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; margin-bottom: 40px; }
-        .stat-card { background: rgba(255,255,255,0.03); border: 1px solid var(--border); padding: 20px; border-radius: 20px; text-align: center; }
-        .stat-number { display: block; font-size: 22px; font-weight: 800; color: #fff; }
-        .stat-label { font-size: 10px; color: var(--accent); text-transform: uppercase; font-weight: 600; }
-        
-     .video-container { 
-    position: relative; 
-    padding-bottom: 56.25%; 
-    height: 0; 
-    border-radius: 20px; 
-    overflow: hidden; 
-    margin: 0 auto 30px auto; 
-    border: 1px solid var(--border);
-    width: 100%;
-    max-width: 800px; /* Esto lo mantiene bajo control en PC */
-}
-        .video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
-        
+        .gamma-link { text-decoration: none; display: block; width: 100%; max-width: 800px; margin: 0 auto 20px auto; border-radius: 20px; overflow: hidden; border: 1px solid var(--border); cursor: pointer; transition: all 0.3s ease; }
+        .gamma-link:hover { border-color: var(--accent); }
+        .gamma-preview { position: relative; width: 100%; padding-bottom: 56.25%; height: 0; background: #000; }
+        .gamma-preview img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; }
+        .gamma-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); display: flex; flex-direction: column; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.3s ease; z-index: 10; }
+        .gamma-link:hover .gamma-overlay { opacity: 1; }
+        .gamma-overlay svg { color: var(--accent); margin-bottom: 10px; }
+        .gamma-overlay p { color: #fff; font-weight: 600; font-size: 14px; }
+
+        .btn-fuxion { display: block; width: 100%; max-width: 800px; margin: 0 auto 30px auto; padding: 16px; background: linear-gradient(90deg, #00d4ff, #0033A0); border: none; border-radius: 15px; color: #fff; font-weight: 700; font-size: 15px; cursor: pointer; text-transform: uppercase; text-align: center; text-decoration: none; letter-spacing: 0.5px; transition: opacity 0.3s; }
+        .btn-fuxion:hover { opacity: 0.85; }
+
+        /* ORIGIN */
+        .origin-section { background: linear-gradient(145deg, rgba(0,51,160,0.08), rgba(0,0,0,0.6)); border: 1px solid rgba(0,212,255,0.2); border-left: 4px solid var(--accent); border-radius: 20px; padding: 25px; margin-bottom: 30px; }
+        .origin-section h3 { font-size: 13px; text-transform: uppercase; color: var(--accent); font-weight: 800; margin-bottom: 12px; letter-spacing: 1px; }
+        .origin-section p { font-size: 14px; opacity: 0.85; line-height: 1.7; }
+        .origin-section p strong { color: #fff; }
+
+        .millonarios-badge { display: flex; align-items: center; gap: 12px; background: linear-gradient(135deg, rgba(255,215,0,0.08), rgba(255,165,0,0.05)); border: 1px solid rgba(255,215,0,0.3); border-radius: 15px; padding: 15px 18px; margin-top: 15px; }
+        .millonarios-badge .icon { font-size: 22px; flex-shrink: 0; }
+        .millonarios-badge p { font-size: 13px; color: #ffd700; font-weight: 600; line-height: 1.4; margin: 0; }
+
+        /* BENEFICIOS */
+        .beneficios-section { margin-bottom: 30px; }
+        .beneficios-section h3 { font-size: 13px; text-transform: uppercase; color: rgba(255,255,255,0.5); font-weight: 700; letter-spacing: 1px; margin-bottom: 15px; text-align: center; }
+        .beneficio-card { display: flex; align-items: flex-start; gap: 15px; background: rgba(255,255,255,0.02); border: 1px solid var(--border); border-radius: 15px; padding: 18px; margin-bottom: 10px; }
+        .beneficio-icon { font-size: 24px; flex-shrink: 0; margin-top: 2px; }
+        .beneficio-title { font-size: 14px; font-weight: 800; color: #fff; margin-bottom: 4px; }
+        .beneficio-desc { font-size: 13px; color: rgba(255,255,255,0.65); line-height: 1.5; }
+        .beneficio-desc strong { color: var(--accent); }
+
+        /* ENROLLMENT BTN */
+        .btn-enrollment { display: block; width: 100%; padding: 20px; background: linear-gradient(90deg, #00b843, #007AFF); border: none; border-radius: 15px; color: #fff; font-weight: 800; font-size: clamp(14px, 3.5vw, 17px); cursor: pointer; text-transform: uppercase; text-align: center; text-decoration: none; letter-spacing: 0.5px; transition: opacity 0.3s; margin-bottom: 30px; line-height: 1.3; }
+        .btn-enrollment:hover { opacity: 0.88; }
+        .btn-enrollment small { display: block; font-size: 11px; font-weight: 400; opacity: 0.8; margin-top: 4px; text-transform: none; letter-spacing: 0; }
+
         .bio-section { background: linear-gradient(145deg, rgba(0,51,160,0.1), rgba(17,24,39,0.8)); border: 1px solid var(--fuxion-blue); border-radius: 25px; padding: 25px; margin-bottom: 40px; text-align: center; }
         .glass-card { background: rgba(17,24,39,0.95); border: 1px solid var(--border); border-radius: 30px; padding: 30px; }
-        
         .input-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
         input, select, textarea { width: 100%; background: #161b22 !important; border: 1px solid var(--border); padding: 16px; border-radius: 12px; color: #fff !important; margin-bottom: 15px; font-size: 14px; outline: none; font-family: inherit; }
-        
-        .btn-submit { width: 100%; padding: 20px; background: linear-gradient(90deg, var(--fuxion-blue), #007AFF); border: none; border-radius: 15px; color: #fff; font-weight: 700; font-size: 16px; cursor: pointer; text-transform: uppercase; transition: 0.3s; margin-bottom: 20px; }
-        .btn-submit:disabled { opacity: 0.5; }
+        .phone-input-container { display: flex; gap: 8px; }
+        .phone-input-container select { width: 90px; flex-shrink: 0; }
+        .btn-submit { width: 100%; padding: 20px; background: linear-gradient(90deg, var(--fuxion-blue), #007AFF); border: none; border-radius: 15px; color: #fff; font-weight: 700; font-size: 16px; cursor: pointer; text-transform: uppercase; transition: 0.3s; margin-bottom: 20px; line-height: 1.3; text-align: center; }
+        .btn-submit:disabled { opacity: 0.5; cursor: not-allowed; }
 
-        /* RESEÑAS */
+        .scarcity-bar { background: rgba(255,59,59,0.08); border: 1px solid rgba(255,59,59,0.3); border-radius: 12px; padding: 12px 16px; margin-bottom: 20px; display: flex; align-items: center; gap: 10px; font-size: 13px; }
+        .scarcity-dot { width: 8px; height: 8px; background: var(--red); border-radius: 50%; flex-shrink: 0; animation: pulse 1.5s infinite; }
+        @keyframes pulse { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.5; transform: scale(1.3); } }
+        .scarcity-text { color: #ffaaaa; font-weight: 600; line-height: 1.4; }
+
+        .filter-box { background: rgba(0, 212, 255, 0.05); border: 1px dashed #00d4ff; border-radius: 12px; padding: 15px; margin-bottom: 20px; }
+        .filter-box p { font-size: 13px; color: #fff; margin: 0 0 12px 0; line-height: 1.5; text-align: center; }
+        .checkbox-label { display: flex; align-items: flex-start; gap: 10px; cursor: pointer; font-size: 13px; color: rgba(255,255,255,0.8); line-height: 1.4; }
+        .checkbox-label input[type="checkbox"] { width: 18px !important; height: 18px !important; min-width: 18px; padding: 0 !important; margin: 2px 0 0 0 !important; accent-color: var(--accent); cursor: pointer; flex-shrink: 0; }
+        .checkbox-label span strong { color: var(--accent); }
+
         .reviews-toggle { width: 100%; background: transparent; border: 1px solid var(--border); color: var(--accent); padding: 12px; border-radius: 12px; cursor: pointer; font-weight: 600; font-size: 13px; margin-bottom: 20px; transition: 0.3s; font-family: inherit; }
-        .reviews-toggle:hover { background: rgba(0, 212, 255, 0.05); border-color: var(--accent); }
         .reviews-wrapper { max-height: 0; overflow: hidden; transition: max-height 0.5s ease-in-out; }
         .reviews-wrapper.active { max-height: 1500px; overflow-y: auto; }
         .reviews-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; padding-bottom: 20px; }
         .rev-card { background: rgba(255,255,255,0.02); border: 1px solid var(--border); padding: 15px; border-radius: 15px; }
-        .rev-photo-full { width: 100%; height: auto; border-radius: 12px; margin-bottom: 12px; border: 1px solid var(--border); display: block; object-fit: cover; }
-        .rev-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
-        .rev-avatar { width: 40px; height: 40px; border-radius: 50%; background: var(--fuxion-blue); display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 14px; border: 1.5px solid var(--accent); flex-shrink: 0; }
-        .rev-info h4 { font-size: 13px; margin: 0; color: #fff; }
-        .rev-stars { color: #FFB800; font-size: 10px; }
-        .rev-text { font-size: 11px; color: #bbb; font-style: italic; line-height: 1.4; }
-
-        /* BOTONES EXTRA */
         .github-btns { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 10px; }
         .btn-github { padding: 12px; background: transparent; border: 1px solid var(--border); border-radius: 12px; color: #fff; text-decoration: none; text-align: center; font-size: 12px; font-weight: 600; text-transform: uppercase; transition: 0.3s; }
-        .btn-github:hover { background: rgba(255, 255, 255, 0.05); border-color: #fff; }
-
-      /* --- AJUSTES PARA COMPUTADORA (Pantallas de más de 1024px) --- */
-@media (min-width: 1024px) {
-    .stats-grid { 
-        grid-template-columns: repeat(3, 1fr); 
-        gap: 30px; /* Más espacio entre tarjetas en PC */
-    }
-    
-    .input-grid { 
-        gap: 20px; 
-    }
-
-    .hero h1 {
-        font-size: 55px; /* Título más imponente en PC */
-        margin: 40px 0;
-    }
-}
-
-/* --- AJUSTES PARA TABLET (Entre 600px y 1024px) --- */
-@media (min-width: 600px) and (max-width: 1023px) {
-    .container {
-        width: 90%;
-    }
-}
-
-/* --- AJUSTES PARA MÓVIL (Lo que ya tenías) --- */
-@media (max-width: 599px) {
-    .stats-grid, .input-grid, .github-btns, .reviews-grid { 
-        grid-template-columns: 1fr; 
-    }
-}
+        @media (max-width: 599px) { .input-grid, .github-btns { grid-template-columns: 1fr; } }
     </style>
 </head>
 <body>
 
+    <div class="hook-banner">
+        🏙️ 1 socio estratégico por ciudad | Sé el primero en la tuya
+    </div>
+
     <div class="container">
-        <header class="hero"><h1>The Diamond Mentorship</h1></header>
+        <header class="hero">
+            <h1>The Diamond Mentorship <br> ADRIAN WARD</h1>
+            <p class="hook-line">Construí un negocio de $8M en 15 países sin experiencia previa.</p>
+        </header>
 
         <div class="stats-grid">
-            <div class="stat-card"><span class="stat-number">$8M</span><span class="stat-label">Ventas</span></div>
-            <div class="stat-card"><span class="stat-number">20k+</span><span class="stat-label">Clientes</span></div>
+            <div class="stat-card"><span class="stat-number">$8M</span><span class="stat-label">Ventas 2025</span></div>
+            <div class="stat-card"><span class="stat-number">20k+</span><span class="stat-label">Clientes Mensuales</span></div>
             <div class="stat-card"><span class="stat-number">TOP</span><span class="stat-label">Hall Millonario</span></div>
         </div>
 
-        <div class="video-container">
-    <iframe src="https://www.youtube.com/embed/U33TC3cmd5E" allowfullscreen></iframe>
-</div>
-        <div style="padding: 0 20px; margin: 20px 0 30px 0;">
-    <a href="https://beacons.ai/adrianward/adrianysiquierosercliente" target="_blank" 
-       style="display: block; width: 100%; padding: 18px; background: transparent; border: 2px solid #00d4ff; color: #00d4ff; border-radius: 15px; text-decoration: none; font-weight: 700; text-align: center; text-transform: uppercase; letter-spacing: 1px;">
-        📖 VER BEBIDAS EXÓTICAS FUXION
-    </a>
-</div>
+        <p class="video-label">▶ Mira esta diapositiva primero</p>
+        <p class="video-title">En ruta al 1% del mercado global</p>
+        <a href="https://gamma.app/docs/El-Mercado-del-Estomago-za52bokzha5p7ql" target="_blank" class="gamma-link">
+            <div class="gamma-preview">
+                <div class="gamma-overlay">
+                    <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                    </svg>
+                    <p>Ver presentación completa</p>
+                </div>
+                <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&h=450&fit=crop" alt="El Mercado del Estómago" style="width: 100%; height: 100%; object-fit: cover;">
+            </div>
+        </a>
+
+        <a href="https://beacons.ai/adrianward/adrianysiquierosercliente" target="_blank" class="btn-fuxion">
+            🥤 Bebidas Funcionales FuXion
+        </a>
+
+        <div class="origin-section">
+            <h3>📍 De Lima a 15 países</h3>
+            <p>En 2011 me invitaron a un bbq. No sabía que esa tarde cambiaría todo. Tenía 20 años, cero experiencia en negocios y acababa de volver de trabajar como lavaplatos en Canadá. <strong>Dije sí cuando todos los demás dijeron no.</strong> Cuatro años después era el Diamond más joven en la historia de FuXion. Hoy gestionamos en equipo más de 20.000 clientes en 15 países. No porque sea especial, sino porque encontré un producto excepcional y aprendí los principios del éxito.</p>
+            <div class="millonarios-badge">
+                <div class="icon">🏆</div>
+                <p>Ya están saliendo los primeros millonarios del equipo. Los próximos 5 años pueden determinar todo para ti.</p>
+            </div>
+        </div>
+
+        <!-- BENEFICIOS -->
+        <div class="beneficios-section">
+            <h3>Lo que incluye el acompañamiento</h3>
+            <div class="beneficio-card">
+                <div class="beneficio-icon">🤖</div>
+                <div>
+                    <div class="beneficio-title">Asistente Virtual | 30 días gratis</div>
+                    <div class="beneficio-desc">Si consigues tus primeros <strong>20 clientes en 15 días</strong>, yo financio y contrato un asistente virtual para ti durante un mes completo.</div>
+                </div>
+            </div>
+            <div class="beneficio-card">
+                <div class="beneficio-icon">🤝</div>
+                <div>
+                    <div class="beneficio-title">Acompañamiento en tu lanzamiento</div>
+                    <div class="beneficio-desc">No arrancas solo. Estoy contigo en tus <strong>primeras reuniones de lanzamiento de negocio.</strong> Te ayudo a presentar, cerrar y construir desde el día uno.</div>
+                </div>
+            </div>
+            <div class="beneficio-card">
+                <div class="beneficio-icon">✈️</div>
+                <div>
+                    <div class="beneficio-title">Viajo a tu ciudad</div>
+                    <div class="beneficio-desc">Si posicionas <strong>300 cajas</strong> o reúnes <strong>30 personas con entrada pagada y hotel reservado</strong>, voy en persona a hacer un evento contigo.</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ENROLLMENT -->
+        <a href="https://www.ifuxion.com/adrianward/enrollment/enrollmentconfiguration?CustomerTypeID=1" target="_blank" class="btn-enrollment">
+            🚀 Abrir mi negocio FuXion ahora
+            <small>Empieza hoy | Cupo único por ciudad</small>
+        </a>
 
         <section class="bio-section">
-            <h3>Evaluación de Liderazgo</h3>
-            <p style="font-size: 14px; opacity: 0.8;">Completa tus datos para unirte al equipo.</p>
+            <h3>HAZ NEGOCIO EN LA INDUSTRIA</h3>
+            <p style="font-size: 14px; opacity: 0.8;">MULTIBILLONARIA DE LAS BEBIDAS FUNCIONALES.</p>
         </section>
 
         <section class="glass-card">
+                        <div class="scarcity-bar">
+                <div class="scarcity-dot"></div>
+                <span class="scarcity-text">🏙️ Solo <strong>1 socio estratégico por ciudad</strong> | Una vez confirmado tu cupo, esa ciudad queda cerrada.</span>
+            </div>
+
+            <div class="filter-box">
+                <p>⚠️ <strong>FILTRO DE ACCESO:</strong> Trabajar con Adrián requiere una inversión de <strong>500€</strong> en tu primer stock.</p>
+                <label class="checkbox-label">
+                    <input type="checkbox" id="acuerdo" onchange="toggleSubmit()">
+                    <span>Entiendo y acepto que para iniciar necesito una inversión de <strong>500€ en producto</strong>. Estoy listo para comenzar.</span>
+                </label>
+            </div>
+
             <form id="mentorshipForm">
                 <div class="input-grid">
                     <input type="text" id="nombre" placeholder="Nombre completo" required>
                     <input type="email" id="email" placeholder="Email" required>
                 </div>
                 <div class="input-grid">
-                    <input type="tel" id="whatsapp" placeholder="WhatsApp" required>
-                    <input type="text" id="instagram" placeholder="Instagram">
+                    <div class="phone-input-container">
+                        <select id="prefijo" required>
+                            <option value="" disabled selected>País</option>
+                            <option value="+34">🇪🇸 +34</option>
+                            <option value="+1">🇺🇸 +1</option>
+                            <option value="+52">🇲🇽 +52</option>
+                            <option value="+57">🇨🇴 +57</option>
+                            <option value="+51">🇵🇪 +51</option>
+                            <option value="+54">🇦🇷 +54</option>
+                            <option value="+56">🇨🇱 +56</option>
+                            <option value="+593">🇪🇨 +593</option>
+                            <option value="+507">🇵🇦 +507</option>
+                            <option value="+58">🇻🇪 +58</option>
+                            <option value="+39">🇮🇹 +39</option>
+                        </select>
+                        <input type="tel" id="whatsapp" placeholder="WhatsApp" required>
+                    </div>
+                    <input type="text" id="instagram" placeholder="Instagram (Opcional)">
                 </div>
                 <div class="input-grid">
                     <input type="number" id="edad" placeholder="Edad" required>
@@ -161,17 +230,14 @@
                         <option value="Moderado">Construcción Sólida ⚡</option>
                     </select>
                 </div>
-                <textarea id="sobre_ellos" placeholder="Cuéntame tus metas..." rows="3" required></textarea>
-
-                <button type="submit" class="btn-submit" id="submitBtn">FINALIZAR Y UNIRME</button>
+                <textarea id="sobre_ellos" placeholder="Cuéntame sobre ti..." rows="3" required></textarea>
+                <button type="submit" class="btn-submit" id="submitBtn" disabled>ACEPTO EL RETO <br> QUIERO CONSTRUIR MI IMPERIO</button>
             </form>
 
-            <button class="reviews-toggle" onclick="toggleReviews()">✨ VER TESTIMONIOS DE LA COMUNIDAD <span id="arrow">▼</span></button>
-            
+            <button class="reviews-toggle" onclick="toggleReviews()">✨ VER TESTIMONIOS DE LOS CLIENTES <span id="arrow">▼</span></button>
             <div id="reviewsWrapper" class="reviews-wrapper">
                 <div id="reviewsGrid" class="reviews-grid"></div>
             </div>
-
             <div class="github-btns">
                 <a href="https://adrianwardgorbitz.github.io/liderazgo" target="_blank" class="btn-github">Test de Liderazgo</a>
                 <a href="https://adrianwardgorbitz.github.io/cuestionario" target="_blank" class="btn-github">Test Estilo de Vida</a>
@@ -181,7 +247,6 @@
 
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
-
     <script>
         const firebaseConfig = {
             apiKey: "AIzaSyBZ1iquQo-rcaI25-eStS8ZhwYI-lugCLk",
@@ -195,92 +260,76 @@
         const db = firebase.firestore();
 
         const CONFIG = { 
-            webhook: "https://hook.eu1.make.com/cmma9n6v7egfcmtdjjx85kuc72p83b3k",
+            webhook: "https://script.google.com/macros/s/AKfycbx5We2tfyL1KrbbmdEI-zBNOyB2JD1Pu7rCAnyz-CJiKoCggQt-9u1lS51FFK_yAQlE/exec",
             whatsapp_link: "https://chat.whatsapp.com/KtBu7mszVBOE2oMdf0bFl1"
         };
 
-        let reviewsLoaded = false;
+        function toggleSubmit() {
+            const checked = document.getElementById('acuerdo').checked;
+            document.getElementById('submitBtn').disabled = !checked;
+        }
+
         function toggleReviews() {
             const wrapper = document.getElementById('reviewsWrapper');
             const arrow = document.getElementById('arrow');
             wrapper.classList.toggle('active');
             arrow.style.transform = wrapper.classList.contains('active') ? 'rotate(180deg)' : 'rotate(0deg)';
-            
-            if (!reviewsLoaded) {
-                loadReviews();
-                reviewsLoaded = true;
-            }
+            if (!window.reviewsLoaded) { loadReviews(); window.reviewsLoaded = true; }
         }
 
         async function loadReviews() {
             const grid = document.getElementById('reviewsGrid');
-            grid.innerHTML = '<p style="font-size:12px; opacity:0.5; grid-column:1/-1; text-align:center;">Cargando experiencia de socios...</p>';
-            
+            grid.innerHTML = '<p style="font-size:12px; opacity:0.5; grid-column:1/-1; text-align:center;">Cargando...</p>';
             try {
                 const snap = await db.collection('reviews').orderBy('timestamp', 'desc').limit(6).get();
                 grid.innerHTML = '';
-                
                 snap.forEach(doc => {
                     const d = doc.data();
-                    let contentHTML = '';
-
-                    if (d.photoUrls && Array.isArray(d.photoUrls) && d.photoUrls.length > 0) {
-                        contentHTML = `
-                            <img src="${d.photoUrls[0]}" class="rev-photo-full">
-                            <div class="rev-header">
-                                <div class="rev-info">
-                                    <h4>${d.name}</h4>
-                                    <div class="rev-stars">${'⭐'.repeat(d.rating || 5)}</div>
-                                </div>
-                            </div>`;
-                    } else {
-                        contentHTML = `
-                            <div class="rev-header">
-                                <div class="rev-avatar">${d.name.charAt(0)}</div>
-                                <div class="rev-info">
-                                    <h4>${d.name}</h4>
-                                    <div class="rev-stars">${'⭐'.repeat(d.rating || 5)}</div>
-                                </div>
-                            </div>`;
-                    }
-                    
-                    grid.innerHTML += `<div class="rev-card">${contentHTML}<p class="rev-text">"${d.comment}"</p></div>`;
+                    let img = d.photoUrls?.length ? `<img src="${d.photoUrls[0]}" style="width:100%; border-radius:10px; margin-bottom:10px;">` : '';
+                    grid.innerHTML += `<div class="rev-card">${img}<h4>${d.name}</h4><p class="rev-text">"${d.comment}"</p></div>`;
                 });
-            } catch (e) {
-                console.error("Error:", e);
-                grid.innerHTML = '<p>Error al cargar reseñas.</p>';
-            }
+            } catch (e) { grid.innerHTML = '<p>Error.</p>'; }
         }
 
         document.getElementById('mentorshipForm').addEventListener('submit', function(e) {
             e.preventDefault();
+            if (!document.getElementById('acuerdo').checked) {
+                alert('Por favor confirma que aceptas la inversión inicial de 500€.');
+                return;
+            }
             const btn = document.getElementById('submitBtn');
             btn.disabled = true; 
             btn.innerText = 'PROCESANDO...';
             
+            const prefijo = document.getElementById('prefijo').value;
+            const tel = document.getElementById('whatsapp').value;
+
             const payload = {
-                nombre: document.getElementById('nombre').value,
-                email: document.getElementById('email').value,
-                whatsapp: document.getElementById('whatsapp').value,
-                instagram: document.getElementById('instagram').value,
-                edad: document.getElementById('edad').value,
-                ciudad: document.getElementById('ciudad').value,
-                gusto: document.getElementById('gusto').value,
-                disponibilidad: document.getElementById('disponibilidad').value,
-                ritmo: document.getElementById('ritmo').value,
-                sobre_ellos: document.getElementById('sobre_ellos').value
+                nombre: document.getElementById('nombre').value || "",
+                email: document.getElementById('email').value || "",
+                whatsapp: (prefijo + " " + tel).trim(),
+                instagram: document.getElementById('instagram').value || "No proporcionado",
+                edad: Number(document.getElementById('edad').value),
+                ciudad: document.getElementById('ciudad').value || "No especificada",
+                gusto: document.getElementById('gusto').value || "",
+                disponibilidad: document.getElementById('disponibilidad').value || "",
+                ritmo: document.getElementById('ritmo').value || "",
+                sobre_ellos: document.getElementById('sobre_ellos').value || ""
             };
 
             fetch(CONFIG.webhook, { 
-            method: 'POST', 
-            headers: { 'Content-Type': 'application/json' }, 
-            body: JSON.stringify(payload) 
-        })
-            setTimeout(() => {
+                method: 'POST',
+                headers: { 'Content-Type': 'text/plain' }, 
+                body: JSON.stringify(payload) 
+            }).then(() => {
+                btn.innerText = '¡ÉXITO!';
+                alert("¡Perfil enviado! Únete al grupo de WhatsApp.");
                 window.open(CONFIG.whatsapp_link, '_blank');
-                btn.innerText = '¡EXITO!';
-                alert("¡Perfil enviado! Únete al grupo de WhatsApp en la pestaña abierta.");
-            }, 600);
+            }).catch(err => {
+                alert("Error al enviar. Intenta de nuevo.");
+                btn.disabled = false;
+                btn.innerText = "ACEPTO EL RETO";
+            });
         });
     </script>
 </body>
