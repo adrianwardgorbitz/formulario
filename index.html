@@ -25,14 +25,8 @@
         .video-label { text-align: center; font-size: 12px; text-transform: uppercase; color: rgba(255,255,255,0.4); font-weight: 600; letter-spacing: 1px; margin-bottom: 10px; }
         .video-title { text-align: center; font-size: clamp(15px, 3.5vw, 20px); font-weight: 800; color: #fff; margin-bottom: 15px; line-height: 1.3; }
         
-        .gamma-link { text-decoration: none; display: block; width: 100%; max-width: 800px; margin: 0 auto 20px auto; border-radius: 20px; overflow: hidden; border: 1px solid var(--border); cursor: pointer; transition: all 0.3s ease; }
-        .gamma-link:hover { border-color: var(--accent); }
-        .gamma-preview { position: relative; width: 100%; padding-bottom: 56.25%; height: 0; background: #000; }
-        .gamma-preview img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; }
-        .gamma-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); display: flex; flex-direction: column; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.3s ease; z-index: 10; }
-        .gamma-link:hover .gamma-overlay { opacity: 1; }
-        .gamma-overlay svg { color: var(--accent); margin-bottom: 10px; }
-        .gamma-overlay p { color: #fff; font-weight: 600; font-size: 14px; }
+        .video-container { position: relative; width: 100%; max-width: 800px; padding-bottom: 56.25%; height: 0; margin: 0 auto 20px auto; border-radius: 20px; overflow: hidden; border: 1px solid var(--border); background: #000; }
+        .video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
 
         .btn-fuxion { display: block; width: 100%; max-width: 800px; margin: 0 auto 30px auto; padding: 16px; background: linear-gradient(90deg, #00d4ff, #0033A0); border: none; border-radius: 15px; color: #fff; font-weight: 700; font-size: 15px; cursor: pointer; text-transform: uppercase; text-align: center; text-decoration: none; letter-spacing: 0.5px; transition: opacity 0.3s; }
         .btn-fuxion:hover { opacity: 0.85; }
@@ -109,19 +103,12 @@
             <div class="stat-card"><span class="stat-number">TOP</span><span class="stat-label">Hall Millonario</span></div>
         </div>
 
-        <p class="video-label">▶ Mira esta diapositiva primero</p>
+        <p class="video-label">▶ Mira este video primero</p>
         <p class="video-title">En ruta al 1% del mercado global</p>
-        <a href="https://gamma.app/docs/El-Mercado-del-Estomago-za52bokzha5p7ql" target="_blank" class="gamma-link">
-            <div class="gamma-preview">
-                <div class="gamma-overlay">
-                    <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <polygon points="5 3 19 12 5 21 5 3"></polygon>
-                    </svg>
-                    <p>Ver presentación completa</p>
-                </div>
-                <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&h=450&fit=crop" alt="El Mercado del Estómago" style="width: 100%; height: 100%; object-fit: cover;">
-            </div>
-        </a>
+
+        <div class="video-container">
+            <iframe src="https://www.youtube.com/embed/6GG7Vvv7STk" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        </div>
 
         <a href="https://beacons.ai/adrianward/adrianysiquierosercliente" target="_blank" class="btn-fuxion">
             🥤 Bebidas Funcionales FuXion
@@ -174,7 +161,7 @@
         </section>
 
         <section class="glass-card">
-                        <div class="scarcity-bar">
+            <div class="scarcity-bar">
                 <div class="scarcity-dot"></div>
                 <span class="scarcity-text">🏙️ Solo <strong>1 socio estratégico por ciudad</strong> | Una vez confirmado tu cupo, esa ciudad queda cerrada.</span>
             </div>
